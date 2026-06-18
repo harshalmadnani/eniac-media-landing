@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TrendingUp, Users, Radio, Calendar, Building2, ArrowUpRight, ArrowLeft } from "lucide-react";
 import Navbar from "../components/Navbar";
+import Aurora from "../components/Aurora";
 import Footer from "../components/Footer";
 import TokenCoin from "../components/TokenCoin";
 import Sparkline from "../components/Sparkline";
@@ -33,7 +34,8 @@ export default function Work() {
   const list = active === "All" ? cases : cases.filter((c) => c.type === active);
 
   return (
-    <div className="relative min-h-screen bg-ink-900">
+    <div className="relative min-h-screen">
+      <Aurora />
       <Navbar />
 
       {/* header */}

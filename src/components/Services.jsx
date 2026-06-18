@@ -74,7 +74,7 @@ export default function Services() {
               <motion.article
                 whileHover={{ y: -6 }}
                 transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                className="card group relative flex h-full flex-col overflow-hidden p-7"
+                className="card gradient-border group relative flex h-full flex-col overflow-hidden p-7"
               >
                 <div className="halftone pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-25" />
                 <div className="relative flex items-center justify-between">

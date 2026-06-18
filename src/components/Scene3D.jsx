@@ -1,14 +1,16 @@
 import { Suspense, useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, Edges, Points, PointMaterial } from "@react-three/drei";
-import { EffectComposer, Bloom } from "@react-three/postprocessing";
-import { AdditiveBlending } from "three";
+import { EffectComposer, Bloom, ChromaticAberration } from "@react-three/postprocessing";
+import { AdditiveBlending, Color, Vector2 } from "three";
 
 // shared pointer (canvas wrapper is pointer-events-none, so track window)
 const pointer = { x: 0, y: 0 };
 
 const PURPLE = "#8b5cff";
 const LILAC = "#c4b5fd";
+const PINK = "#ff4ecd";
+const CYAN = "#22d3ee";
 
 function OrbitRing({ radius = 2.4, tilt = 0, spin = 0.4, color = PURPLE, thickness = 0.012 }) {
   const ref = useRef();
@@ -29,20 +31,28 @@ function Crystal() {
   const shell = useRef();
   const inner = useRef();
   const core = useRef();
+  const coreMat = useRef();
   const halo = useRef();
+  const haloMat = useRef();
+  const tmp = useRef(new Color());
 
   useFrame((state, delta) => {
     const t = state.clock.elapsedTime;
     if (shell.current) {
-      shell.current.rotation.y += delta * 0.18;
-      shell.current.rotation.x = Math.sin(t * 0.2) * 0.14;
+      shell.current.rotation.y += delta * 0.2;
+      shell.current.rotation.x = Math.sin(t * 0.2) * 0.16;
     }
     if (inner.current) {
-      inner.current.rotation.y -= delta * 0.3;
-      inner.current.rotation.z += delta * 0.08;
+      inner.current.rotation.y -= delta * 0.34;
+      inner.current.rotation.z += delta * 0.1;
     }
-    if (core.current) core.current.scale.setScalar(1 + Math.sin(t * 1.7) * 0.08);
-    if (halo.current) halo.current.scale.setScalar(1 + Math.sin(t * 1.7) * 0.14);
+    if (core.current) core.current.scale.setScalar(1 + Math.sin(t * 1.8) * 0.1);
+    if (halo.current) halo.current.scale.setScalar(1 + Math.sin(t * 1.8) * 0.18);
+
+    // cycle the core + halo through the vibrant palette
+    const hue = (t * 0.06) % 1;
+    if (coreMat.current) coreMat.current.color.setHSL(hue, 0.85, 0.78);
+    if (haloMat.current) haloMat.current.color.setHSL(hue, 0.9, 0.6);
   });
 
   return (
@@ -57,33 +67,34 @@ function Crystal() {
       {/* inner counter-rotating frame */}
       <mesh ref={inner}>
         <dodecahedronGeometry args={[1.12, 0]} />
-        <meshBasicMaterial color={LILAC} transparent opacity={0.03} />
-        <Edges color={LILAC} threshold={1} />
+        <meshBasicMaterial color={CYAN} transparent opacity={0.03} />
+        <Edges color={CYAN} threshold={1} />
       </mesh>
 
-      {/* bright pulsing core (blooms) */}
+      {/* bright pulsing core (blooms, cycles color) */}
       <mesh ref={core}>
-        <icosahedronGeometry args={[0.4, 1]} />
-        <meshBasicMaterial color="#e7ddff" toneMapped={false} />
+        <icosahedronGeometry args={[0.42, 1]} />
+        <meshBasicMaterial ref={coreMat} color="#e7ddff" toneMapped={false} />
       </mesh>
 
       {/* soft additive halo */}
       <mesh ref={halo}>
-        <sphereGeometry args={[0.7, 32, 32]} />
+        <sphereGeometry args={[0.72, 32, 32]} />
         <meshBasicMaterial
+          ref={haloMat}
           color={PURPLE}
           transparent
-          opacity={0.22}
+          opacity={0.26}
           blending={AdditiveBlending}
           depthWrite={false}
           toneMapped={false}
         />
       </mesh>
 
-      {/* orbital rings at different tilts */}
-      <OrbitRing radius={2.35} tilt={Math.PI / 2.2} spin={0.5} color={PURPLE} />
-      <OrbitRing radius={2.65} tilt={Math.PI / 3.4} spin={-0.32} color={LILAC} thickness={0.008} />
-      <OrbitRing radius={2.05} tilt={Math.PI / 1.8} spin={0.4} color={LILAC} thickness={0.007} />
+      {/* vibrant orbital rings at different tilts */}
+      <OrbitRing radius={2.35} tilt={Math.PI / 2.2} spin={0.5} color={PURPLE} thickness={0.014} />
+      <OrbitRing radius={2.65} tilt={Math.PI / 3.4} spin={-0.34} color={PINK} thickness={0.01} />
+      <OrbitRing radius={2.05} tilt={Math.PI / 1.8} spin={0.42} color={CYAN} thickness={0.009} />
     </Float>
   );
 }
@@ -116,11 +127,11 @@ function ParticleField() {
       <Points positions={positions} stride={3}>
         <PointMaterial
           transparent
-          color={LILAC}
-          size={0.022}
+          color={CYAN}
+          size={0.024}
           sizeAttenuation
           depthWrite={false}
-          opacity={0.55}
+          opacity={0.6}
           blending={AdditiveBlending}
         />
       </Points>
@@ -138,6 +149,7 @@ function Rig() {
 }
 
 export default function Scene3D() {
+  const caOffset = useMemo(() => new Vector2(0.0016, 0.0016), []);
   useEffect(() => {
     const onMove = (e) => {
       pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -160,11 +172,12 @@ export default function Scene3D() {
         <EffectComposer>
           <Bloom
             mipmapBlur
-            intensity={1.15}
-            luminanceThreshold={0.15}
-            luminanceSmoothing={0.3}
-            radius={0.7}
+            intensity={1.6}
+            luminanceThreshold={0.12}
+            luminanceSmoothing={0.35}
+            radius={0.85}
           />
+          <ChromaticAberration offset={caOffset} radialModulation modulationOffset={0.4} />
         </EffectComposer>
       </Suspense>
       <Rig />

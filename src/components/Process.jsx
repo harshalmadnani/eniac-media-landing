@@ -30,7 +30,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="relative border-y border-white/10 bg-ink-900 py-24 sm:py-32">
+    <section id="process" className="relative border-y border-white/10 bg-ink-900/40 py-24 backdrop-blur-sm sm:py-32">
       <div className="grid-lines pointer-events-none absolute inset-0 opacity-40" />
       <div className="container-px relative">
         <Reveal>

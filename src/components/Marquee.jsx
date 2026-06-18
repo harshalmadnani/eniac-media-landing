@@ -13,7 +13,7 @@ const partners = [
 
 export default function Marquee() {
   return (
-    <section className="border-y border-white/10 bg-ink-900 py-8">
+    <section className="border-y border-white/10 bg-ink-900/40 py-8 backdrop-blur-sm">
       <div className="container-px">
         <p className="mb-7 text-center label-mono">
           Trusted by industry leaders &amp; emerging Web3 ecosystems
