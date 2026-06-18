@@ -1,50 +1,81 @@
-import { Suspense, useMemo, useRef } from "react";
+import { Suspense, useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import {
-  Float,
-  Environment,
-  Lightformer,
-  MeshDistortMaterial,
-  Icosahedron,
-  Points,
-  PointMaterial,
-} from "@react-three/drei";
-import * as THREE from "three";
+import { Float, Edges, Torus, Points, PointMaterial } from "@react-three/drei";
+import { AdditiveBlending } from "three";
+
+// shared pointer (canvas wrapper is pointer-events-none, so track window)
+const pointer = { x: 0, y: 0 };
 
 function Token() {
-  const inner = useRef();
-  const wire = useRef();
+  const outer = useRef();
+  const mid = useRef();
+  const core = useRef();
+  const glow = useRef();
+  const ring = useRef();
 
   useFrame((state, delta) => {
     const t = state.clock.elapsedTime;
-    if (inner.current) {
-      inner.current.rotation.y += delta * 0.18;
-      inner.current.rotation.x = Math.sin(t * 0.2) * 0.12;
+    if (outer.current) {
+      outer.current.rotation.y += delta * 0.16;
+      outer.current.rotation.x = Math.sin(t * 0.2) * 0.12;
     }
-    if (wire.current) {
-      wire.current.rotation.y -= delta * 0.1;
-      wire.current.rotation.z += delta * 0.04;
+    if (mid.current) {
+      mid.current.rotation.y -= delta * 0.26;
+      mid.current.rotation.z += delta * 0.06;
+    }
+    if (core.current) {
+      const s = 1 + Math.sin(t * 1.8) * 0.06;
+      core.current.scale.setScalar(s);
+    }
+    if (glow.current) {
+      const s = 1 + Math.sin(t * 1.8) * 0.1;
+      glow.current.scale.setScalar(s);
+    }
+    if (ring.current) {
+      ring.current.rotation.z += delta * 0.45;
+      ring.current.rotation.x = Math.PI / 2.5 + Math.sin(t * 0.4) * 0.18;
     }
   });
 
   return (
-    <Float speed={1.4} rotationIntensity={0.5} floatIntensity={1.1}>
-      {/* glossy distorted core */}
-      <Icosahedron ref={inner} args={[1.35, 12]}>
-        <MeshDistortMaterial
-          color="#0c0e12"
-          roughness={0.05}
-          metalness={1}
-          distort={0.32}
-          speed={1.6}
-          envMapIntensity={1.4}
-        />
-      </Icosahedron>
+    <Float speed={1.3} rotationIntensity={0.4} floatIntensity={1.2}>
+      {/* outer glowing wireframe shell */}
+      <mesh ref={outer}>
+        <icosahedronGeometry args={[1.7, 1]} />
+        <meshBasicMaterial color="#cdfd50" transparent opacity={0.03} />
+        <Edges color="#cdfd50" threshold={1} />
+      </mesh>
 
-      {/* lime wireframe shell */}
-      <Icosahedron ref={wire} args={[1.85, 1]}>
-        <meshBasicMaterial color="#cdfd50" wireframe transparent opacity={0.18} />
-      </Icosahedron>
+      {/* inner counter-rotating frame */}
+      <mesh ref={mid}>
+        <icosahedronGeometry args={[1.15, 0]} />
+        <meshBasicMaterial color="#7c5cff" transparent opacity={0.04} />
+        <Edges color="#9d86ff" threshold={1} />
+      </mesh>
+
+      {/* bright pulsing core */}
+      <mesh ref={core}>
+        <icosahedronGeometry args={[0.42, 0]} />
+        <meshBasicMaterial color="#eaffb0" toneMapped={false} />
+      </mesh>
+
+      {/* soft additive glow halo around the core */}
+      <mesh ref={glow}>
+        <sphereGeometry args={[0.75, 32, 32]} />
+        <meshBasicMaterial
+          color="#cdfd50"
+          transparent
+          opacity={0.16}
+          blending={AdditiveBlending}
+          depthWrite={false}
+          toneMapped={false}
+        />
+      </mesh>
+
+      {/* elegant thin orbiting ring */}
+      <Torus ref={ring} args={[2.45, 0.008, 16, 160]}>
+        <meshBasicMaterial color="#cdfd50" toneMapped={false} />
+      </Torus>
     </Float>
   );
 }
@@ -52,10 +83,10 @@ function Token() {
 function ParticleField() {
   const ref = useRef();
   const positions = useMemo(() => {
-    const n = 700;
+    const n = 460;
     const arr = new Float32Array(n * 3);
     for (let i = 0; i < n; i++) {
-      const r = 3 + Math.random() * 4;
+      const r = 3.2 + Math.random() * 4.8;
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
       arr[i * 3] = r * Math.sin(phi) * Math.cos(theta);
@@ -67,8 +98,8 @@ function ParticleField() {
 
   useFrame((_, delta) => {
     if (ref.current) {
-      ref.current.rotation.y += delta * 0.03;
-      ref.current.rotation.x += delta * 0.012;
+      ref.current.rotation.y += delta * 0.025;
+      ref.current.rotation.x += delta * 0.01;
     }
   });
 
@@ -77,11 +108,11 @@ function ParticleField() {
       <Points positions={positions} stride={3}>
         <PointMaterial
           transparent
-          color="#cdfd50"
-          size={0.035}
+          color="#aeb4be"
+          size={0.02}
           sizeAttenuation
           depthWrite={false}
-          opacity={0.6}
+          opacity={0.5}
         />
       </Points>
     </group>
@@ -90,53 +121,34 @@ function ParticleField() {
 
 function Rig() {
   useFrame((state) => {
-    const x = state.pointer.x * 0.4;
-    const y = state.pointer.y * 0.3;
-    state.camera.position.x += (x - state.camera.position.x) * 0.04;
-    state.camera.position.y += (y - state.camera.position.y) * 0.04;
+    state.camera.position.x += (pointer.x * 0.6 - state.camera.position.x) * 0.04;
+    state.camera.position.y += (pointer.y * 0.4 - state.camera.position.y) * 0.04;
     state.camera.lookAt(0, 0, 0);
   });
   return null;
 }
 
 export default function Scene3D() {
+  useEffect(() => {
+    const onMove = (e) => {
+      pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
+      pointer.y = -((e.clientY / window.innerHeight) * 2 - 1);
+    };
+    window.addEventListener("pointermove", onMove);
+    return () => window.removeEventListener("pointermove", onMove);
+  }, []);
+
   return (
     <Canvas
-      dpr={[1, 1.8]}
-      camera={{ position: [0, 0, 6], fov: 42 }}
+      dpr={[1, 2]}
+      camera={{ position: [0, 0, 6], fov: 40 }}
       gl={{ antialias: true, alpha: true }}
-      style={{ touchAction: "pan-y" }}
     >
-      <ambientLight intensity={0.25} />
-      <pointLight position={[5, 5, 5]} intensity={40} color="#cdfd50" />
-      <pointLight position={[-6, -3, -2]} intensity={30} color="#7c5cff" />
-
+      <ambientLight intensity={0.6} />
       <Suspense fallback={null}>
         <Token />
         <ParticleField />
-        {/* local env map (no external HDR fetch) for clean metallic reflections */}
-        <Environment resolution={256}>
-          <Lightformer
-            intensity={2}
-            position={[0, 4, -6]}
-            scale={[10, 6, 1]}
-            color="#ffffff"
-          />
-          <Lightformer
-            intensity={3}
-            position={[-5, 1, 1]}
-            scale={[6, 6, 1]}
-            color="#cdfd50"
-          />
-          <Lightformer
-            intensity={2}
-            position={[5, -2, 2]}
-            scale={[6, 6, 1]}
-            color="#7c5cff"
-          />
-        </Environment>
       </Suspense>
-
       <Rig />
     </Canvas>
   );
