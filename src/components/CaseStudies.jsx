@@ -1,15 +1,38 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { TrendingUp, ArrowUpRight } from "lucide-react";
 import { Reveal, SectionLabel, AnimatedHeading } from "./ui";
 
 const cases = [
-  { token: "$CTX", type: "Pump", change: "+100%", volume: "$600K", date: "02/12/2024" },
-  { token: "$Router", type: "Push", change: "+10%", volume: "$600K", date: "Mar 2025" },
-  { token: "$XAR", type: "Push", change: "+30%", volume: "$300K", date: "Apr 2025" },
-  { token: "$CXT", type: "Pump", change: "+100%", volume: "$600K", date: "May 2025" },
-  { token: "$CXT", type: "Push", change: "+20%", volume: "$1M", date: "May–Jun 2025" },
-  { token: "$MindAI", type: "Push", change: "+50%", volume: "$120K", date: "May–Jun 2025" },
+  { token: "$CTX", img: "/tokens/ctx.png", type: "Pump", change: "+100%", volume: "$600K", date: "02/12/2024" },
+  { token: "$Router", img: "/tokens/router.jpg", type: "Push", change: "+10%", volume: "$600K", date: "Mar 2025" },
+  { token: "$XAR", img: null, type: "Push", change: "+30%", volume: "$300K", date: "Apr 2025" },
+  { token: "$CXT", img: "/tokens/cxt.png", type: "Pump", change: "+100%", volume: "$600K", date: "May 2025" },
+  { token: "$CXT", img: "/tokens/cxt.png", type: "Push", change: "+20%", volume: "$1M", date: "May–Jun 2025" },
+  { token: "$MindAI", img: "/tokens/mindai.jpg", type: "Push", change: "+50%", volume: "$120K", date: "May–Jun 2025" },
 ];
+
+function TokenCoin({ token, img }) {
+  const [failed, setFailed] = useState(!img);
+  const ticker = token.replace("$", "");
+  return (
+    <span className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-full border border-white/10 bg-ink-700">
+      {failed ? (
+        <span className="bg-gradient-to-br from-lime to-mint bg-clip-text font-display text-[10px] font-bold text-transparent">
+          {ticker.slice(0, 3)}
+        </span>
+      ) : (
+        <img
+          src={img}
+          alt={token}
+          loading="lazy"
+          onError={() => setFailed(true)}
+          className="h-full w-full object-cover"
+        />
+      )}
+    </span>
+  );
+}
 
 export default function CaseStudies() {
   return (
@@ -55,7 +78,10 @@ export default function CaseStudies() {
                   className="card flex flex-col justify-between p-5"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-display text-lg font-semibold">{c.token}</span>
+                    <div className="flex items-center gap-2.5">
+                      <TokenCoin token={c.token} img={c.img} />
+                      <span className="font-display text-lg font-semibold">{c.token}</span>
+                    </div>
                     <span className="rounded-full border border-white/10 px-2.5 py-0.5 text-[10px] uppercase tracking-wider text-muted">
                       {c.type}
                     </span>

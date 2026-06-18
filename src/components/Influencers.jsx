@@ -1,42 +1,48 @@
+import { useState } from "react";
 import { Reveal, SectionLabel, AnimatedHeading } from "./ui";
 
 const rowA = [
-  "Crypto Rover",
-  "Michael Wrubel",
-  "DataDash",
-  "Davinci Jeremie",
-  "Professor Crypto",
-  "That Martini Guy",
-  "The Moon",
-  "Altcoin Daily",
+  { name: "Crypto Rover", img: "/influencers/crypto-rover.avif" },
+  { name: "Michael Wrubel", img: "/influencers/michael-wrubel.avif" },
+  { name: "DataDash", img: "/influencers/datadash.webp" },
+  { name: "Davinci Jeremie", img: "/influencers/davinci-jeremie.webp" },
+  { name: "Professor Crypto", img: "/influencers/professor-crypto.webp" },
+  { name: "That Martini Guy", img: "/influencers/that-martini-guy.webp" },
+  { name: "The Moon", img: "/influencers/the-moon.webp" },
+  { name: "Altcoin Daily", img: "/influencers/altcoin-daily.webp" },
 ];
 const rowB = [
-  "Cameron Fous",
-  "Crypto Banter",
-  "Conor Kenny",
-  "Crypto Mason",
-  "CryptosRUs",
-  "Darryl Boo",
-  "Joe Parys",
-  "Crypto Rover",
+  { name: "Cameron Fous", img: "/influencers/cameron-fous.webp" },
+  { name: "Crypto Banter", img: "/influencers/crypto-banter.webp" },
+  { name: "Conor Kenny", img: "/influencers/conor-kenny.webp" },
+  { name: "Crypto Mason", img: "/influencers/crypto-mason.png" },
+  { name: "CryptosRUs", img: "/influencers/cryptosrus.webp" },
+  { name: "Darryl Boo", img: "/influencers/darryl-boo.webp" },
+  { name: "Joe Parys", img: "/influencers/joe-parys.webp" },
+  { name: "Crypto Rover", img: "/influencers/crypto-rover.avif" },
 ];
 
-const palette = ["bg-lime/15 text-lime", "bg-mint/15 text-mint", "bg-white/10 text-bone"];
-
-function Chip({ name, i }) {
+function Chip({ name, img }) {
+  const [failed, setFailed] = useState(false);
   const initials = name
     .split(" ")
     .map((w) => w[0])
     .slice(0, 2)
     .join("");
   return (
-    <div className="flex items-center gap-3 whitespace-nowrap rounded-full border border-white/10 bg-ink-800/60 py-2 pl-2 pr-5">
-      <span
-        className={`grid h-9 w-9 shrink-0 place-items-center rounded-full font-display text-sm font-semibold ${
-          palette[i % palette.length]
-        }`}
-      >
-        {initials}
+    <div className="flex items-center gap-3 whitespace-nowrap rounded-full border border-white/10 bg-ink-800/60 py-2 pl-2 pr-5 transition-colors hover:border-lime/40">
+      <span className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-full bg-ink-700">
+        {failed ? (
+          <span className="font-display text-sm font-semibold text-lime">{initials}</span>
+        ) : (
+          <img
+            src={img}
+            alt={name}
+            loading="lazy"
+            onError={() => setFailed(true)}
+            className="h-full w-full object-cover"
+          />
+        )}
       </span>
       <span className="text-sm font-medium text-bone">{name}</span>
     </div>
@@ -49,8 +55,8 @@ function Row({ items, reverse }) {
       <div
         className={`flex w-max gap-4 pr-4 ${reverse ? "animate-marquee-rev" : "animate-marquee"}`}
       >
-        {[...items, ...items].map((name, i) => (
-          <Chip key={i} name={name} i={i} />
+        {[...items, ...items].map((p, i) => (
+          <Chip key={i} name={p.name} img={p.img} />
         ))}
       </div>
     </div>
