@@ -8,7 +8,7 @@ export function Reveal({ children, delay = 0, y = 24, className = "" }) {
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 1.1, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>
@@ -35,7 +35,7 @@ export function AnimatedHeading({ text, className = "", as = "h2", accentWords =
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-80px" }}
-      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06 } } }}
+      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.13 } } }}
     >
       {words.map((w, i) => {
         const accent = accentWords.includes(w.replace(/[.,]/g, ""));
@@ -44,7 +44,7 @@ export function AnimatedHeading({ text, className = "", as = "h2", accentWords =
             <motion.span
               className={`inline-block ${accent ? "text-lime" : ""}`}
               variants={{ hidden: { y: "110%" }, show: { y: 0 } }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
             >
               {w}
             </motion.span>
@@ -71,14 +71,15 @@ export function ScrollHighlight({ text, className = "" }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.85", "end 0.45"],
+    offset: ["start 0.9", "end 0.6"],
   });
   const words = text.split(" ");
   return (
     <p ref={ref} className={`flex flex-wrap ${className}`}>
       {words.map((w, i) => {
         const start = i / words.length;
-        const end = start + 1 / words.length;
+        // overlap each word's fade window with its neighbours for a smooth sweep
+        const end = Math.min(start + 2.2 / words.length, 1);
         return (
           <HighlightWord key={i} progress={scrollYProgress} range={[start, end]}>
             {w}

@@ -5,11 +5,11 @@ import { ArrowUpRight, Download } from "lucide-react";
 const Scene3D = lazy(() => import("./Scene3D"));
 
 const word = {
-  hidden: { opacity: 0, y: "0.7em" },
+  hidden: { opacity: 0, y: "0.8em" },
   show: (i) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay: 0.15 + i * 0.07, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 1.3, delay: 0.2 + i * 0.13, ease: [0.16, 1, 0.3, 1] },
   }),
 };
 
