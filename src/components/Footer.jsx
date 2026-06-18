@@ -73,7 +73,7 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <SmartLink to="#top" className="flex items-center gap-2.5">
-              <span className="grid h-9 w-9 place-items-center rounded-lg bg-lime font-display text-lg font-bold text-white">
+              <span className="grid h-9 w-9 place-items-center rounded-lg bg-lime font-display text-lg font-bold text-ink">
                 E
               </span>
               <span className="font-display text-lg font-semibold tracking-tight">

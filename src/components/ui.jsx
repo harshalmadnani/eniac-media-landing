@@ -42,7 +42,7 @@ export function AnimatedHeading({ text, className = "", as = "h2", accentWords =
         return (
           <span key={i} className="inline-block overflow-hidden pb-[0.06em] align-top">
             <motion.span
-              className={`inline-block ${accent ? "text-gradient" : ""}`}
+              className={`inline-block ${accent ? "text-gradient italic" : ""}`}
               variants={{ hidden: { y: "110%" }, show: { y: 0 } }}
               transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
             >

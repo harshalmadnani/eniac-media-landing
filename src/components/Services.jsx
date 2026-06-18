@@ -78,7 +78,7 @@ export default function Services() {
               >
                 <div className="halftone pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-25" />
                 <div className="relative flex items-center justify-between">
-                  <span className="grid h-12 w-12 place-items-center rounded-xl border border-white/10 bg-white/5 text-lime transition-colors group-hover:bg-lime group-hover:text-white">
+                  <span className="grid h-12 w-12 place-items-center rounded-xl border border-white/10 bg-white/5 text-lime transition-colors group-hover:bg-lime group-hover:text-ink">
                     <s.icon size={20} />
                   </span>
                   <span className="font-mono text-sm text-white/20">0{i + 1}</span>
@@ -103,12 +103,12 @@ export default function Services() {
         <Reveal delay={0.1}>
           <SmartLink
             to="#contact"
-            className="mt-4 flex flex-col items-start justify-between gap-5 overflow-hidden rounded-2xl bg-lime p-8 text-white transition-transform hover:scale-[1.005] sm:flex-row sm:items-center"
+            className="mt-4 flex flex-col items-start justify-between gap-5 overflow-hidden rounded-2xl bg-lime p-8 text-ink transition-transform hover:scale-[1.005] sm:flex-row sm:items-center"
           >
             <h3 className="max-w-xl font-display text-2xl font-semibold leading-tight">
               Not sure which fits? Let's map your growth playbook together.
             </h3>
-            <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white/15 px-5 py-3 text-sm font-semibold backdrop-blur-sm">
+            <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-ink/15 px-5 py-3 text-sm font-semibold backdrop-blur-sm">
               Book a free strategy call <ArrowUpRight size={16} />
             </span>
           </SmartLink>

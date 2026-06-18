@@ -56,7 +56,7 @@ export default function Hero() {
           Trusted by 50+ Web3, crypto &amp; fintech brands
         </motion.div>
 
-        <h1 className="mt-8 max-w-5xl font-display text-[13vw] font-bold leading-[0.9] tracking-tight sm:text-6xl lg:text-[6.5rem]">
+        <h1 className="mt-8 max-w-5xl font-display text-[13vw] font-semibold leading-[0.95] tracking-[-0.02em] sm:text-6xl lg:text-[6.5rem]">
           <span className="flex flex-wrap justify-center gap-x-5">
             {headline.map((w, i) => (
               <span key={i} className="overflow-hidden pb-[0.08em]">
@@ -65,7 +65,7 @@ export default function Hero() {
                   custom={i}
                   initial="hidden"
                   animate="show"
-                  className={`inline-block ${w.accent ? "text-gradient" : ""}`}
+                  className={`inline-block ${w.accent ? "text-gradient italic" : ""}`}
                 >
                   {w.t}
                 </motion.span>
