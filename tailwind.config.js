@@ -5,28 +5,28 @@ export default {
     extend: {
       colors: {
         ink: {
-          DEFAULT: "#060605",
-          900: "#0b0a09",
-          800: "#13110e",
-          700: "#1c1915",
-          600: "#28241d",
+          DEFAULT: "#08070d",
+          900: "#0b0a12",
+          800: "#121120",
+          700: "#1a1830",
+          600: "#252243",
         },
-        bone: "#ece4d3",
-        muted: "#8c8474",
-        // accent kept under the "lime" key so utilities flip globally; value is gold
+        bone: "#f1eefb",
+        muted: "#8b86a3",
+        // accent kept under the "lime" key so utilities flip globally; value is purple
         lime: {
-          DEFAULT: "#c9a24b",
-          400: "#ddbd72",
+          DEFAULT: "#8b5cff",
+          400: "#a07dff",
         },
-        mint: "#e7d6ae",
-        // gold-family accents (kept names so existing usages stay on-theme)
-        cyan: "#b8924a",
-        pink: "#d8b96b",
-        blue: "#9c8557",
-        amber: "#e0b85a",
+        mint: "#c4b5fd",
+        // purple-family accents (kept names so existing usages stay on-theme)
+        cyan: "#a07dff",
+        pink: "#a78bfa",
+        blue: "#7c5cff",
+        amber: "#c4b5fd",
       },
       fontFamily: {
-        display: ["'Fraunces'", "serif"],
+        display: ["'Space Grotesk'", "sans-serif"],
         sans: ["'Inter'", "sans-serif"],
         mono: ["'JetBrains Mono'", "monospace"],
       },

@@ -57,7 +57,7 @@ export default function CTA() {
                     animate={{ opacity: 1, scale: 1 }}
                     className="flex min-h-[420px] flex-col items-center justify-center text-center"
                   >
-                    <span className="grid h-16 w-16 place-items-center rounded-full bg-lime text-ink">
+                    <span className="grid h-16 w-16 place-items-center rounded-full bg-lime text-white">
                       <Check size={28} />
                     </span>
                     <h3 className="mt-6 font-display text-2xl font-semibold">

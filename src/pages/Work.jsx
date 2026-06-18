@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TrendingUp, Users, Radio, Calendar, Building2, ArrowUpRight, ArrowLeft } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Aurora from "../components/Aurora";
+import ScrollProgress from "../components/ScrollProgress";
 import Footer from "../components/Footer";
 import TokenCoin from "../components/TokenCoin";
 import Sparkline from "../components/Sparkline";
@@ -36,6 +37,7 @@ export default function Work() {
   return (
     <div className="relative min-h-screen">
       <Aurora />
+      <ScrollProgress />
       <Navbar />
 
       {/* header */}
@@ -92,7 +94,7 @@ export default function Work() {
                 onClick={() => setActive(f)}
                 className={`rounded-full border px-5 py-2 text-sm font-medium transition-all ${
                   active === f
-                    ? "border-lime bg-lime text-ink"
+                    ? "border-lime bg-lime text-white"
                     : "border-white/10 text-muted hover:border-white/30 hover:text-bone"
                 }`}
               >

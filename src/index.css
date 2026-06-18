@@ -18,7 +18,7 @@
   }
 
   ::selection {
-    @apply bg-lime text-ink;
+    @apply bg-lime text-white;
   }
 }
 
@@ -33,8 +33,8 @@
 
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-full bg-lime px-7 py-3
-      text-sm font-semibold text-ink transition-all duration-300
-      hover:bg-lime-400 hover:shadow-[0_0_44px_-8px_rgba(201,162,75,0.6)];
+      text-sm font-semibold text-white transition-all duration-300
+      hover:bg-lime-400 hover:shadow-[0_0_44px_-8px_rgba(139,92,255,0.7)];
   }
 
   .btn-ghost {
@@ -63,14 +63,14 @@
   text-wrap: balance;
 }
 
-/* gilded gradient text */
+/* animated purple gradient text */
 .text-gradient {
-  background-image: linear-gradient(100deg, #b8924a, #e7d6ae, #c9a24b, #f0e4c2, #b8924a);
+  background-image: linear-gradient(100deg, #7c5cff, #c4b5fd, #8b5cff, #a78bfa, #7c5cff);
   background-size: 250% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: gradient-x 9s ease infinite;
+  animation: gradient-x 7s ease infinite;
 }
 
 .gradient-border {
@@ -82,7 +82,7 @@
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(120deg, rgba(201, 162, 75, 0.6), rgba(231, 214, 174, 0.15), rgba(201, 162, 75, 0.4));
+  background: linear-gradient(120deg, rgba(139, 92, 255, 0.6), rgba(196, 181, 253, 0.15), rgba(139, 92, 255, 0.45));
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;

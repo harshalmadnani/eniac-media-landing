@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import Aurora from "../components/Aurora";
+import ScrollProgress from "../components/ScrollProgress";
 import Hero from "../components/Hero";
 import Marquee from "../components/Marquee";
 import Ribbon from "../components/Ribbon";
@@ -18,6 +19,7 @@ export default function Home() {
   return (
     <div className="relative min-h-screen">
       <Aurora />
+      <ScrollProgress />
       <Navbar />
       <main>
         <Hero />

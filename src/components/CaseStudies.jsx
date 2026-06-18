@@ -32,20 +32,20 @@ export default function CaseStudies() {
         <div className="mt-14 grid gap-4 lg:grid-cols-3">
           {/* featured campaign */}
           <Reveal className="lg:col-span-1">
-            <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-2xl bg-lime p-8 text-ink">
+            <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-2xl bg-lime p-8 text-white">
               <div className="halftone pointer-events-none absolute inset-0 opacity-20" />
               <div className="relative flex items-center gap-3">
                 <TokenCoin token={featured.token} img={featured.img} size={40} />
                 <div>
                   <div className="font-display font-semibold leading-none">{featured.token}</div>
-                  <div className="text-xs text-ink/70">{featured.name}</div>
+                  <div className="text-xs text-white/70">{featured.name}</div>
                 </div>
               </div>
               <div className="relative">
                 <div className="mt-8 font-display text-6xl font-bold sm:text-7xl">
                   {featured.change}
                 </div>
-                <p className="mt-4 text-sm text-ink/80">{featured.summary}</p>
+                <p className="mt-4 text-sm text-white/80">{featured.summary}</p>
               </div>
             </div>
           </Reveal>

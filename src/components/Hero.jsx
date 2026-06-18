@@ -65,7 +65,7 @@ export default function Hero() {
                   custom={i}
                   initial="hidden"
                   animate="show"
-                  className={`inline-block ${w.accent ? "text-gradient italic" : ""}`}
+                  className={`inline-block ${w.accent ? "text-gradient" : ""}`}
                 >
                   {w.t}
                 </motion.span>

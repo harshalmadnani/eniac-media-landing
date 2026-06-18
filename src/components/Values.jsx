@@ -46,7 +46,7 @@ export default function Values() {
           {values.map((v, i) => (
             <Reveal key={v.title} delay={i * 0.06}>
               <div className="card group h-full p-7 transition-colors hover:border-lime/30">
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-white/5 text-lime transition-all group-hover:bg-lime group-hover:text-ink">
+                <span className="grid h-12 w-12 place-items-center rounded-xl bg-white/5 text-lime transition-all group-hover:bg-lime group-hover:text-white">
                   <v.icon size={20} />
                 </span>
                 <h3 className="mt-6 font-display text-lg font-semibold">{v.title}</h3>
@@ -57,13 +57,13 @@ export default function Values() {
 
           {/* highlight card filling the 6th cell */}
           <Reveal delay={values.length * 0.06}>
-            <div className="flex h-full flex-col justify-between rounded-2xl bg-lime p-7 text-ink">
-              <span className="font-mono text-xs uppercase tracking-widest text-ink/60">
+            <div className="flex h-full flex-col justify-between rounded-2xl bg-lime p-7 text-white">
+              <span className="font-mono text-xs uppercase tracking-widest text-white/60">
                 Our reach
               </span>
               <div>
                 <div className="font-display text-4xl font-bold leading-none">100M+</div>
-                <p className="mt-3 text-sm text-ink/80">
+                <p className="mt-3 text-sm text-white/80">
                   Campaign impressions generated across global exchanges, protocols, and
                   trading ecosystems.
                 </p>
