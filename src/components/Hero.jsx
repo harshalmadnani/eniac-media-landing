@@ -15,11 +15,12 @@ const word = {
 };
 
 const headline = [
-  { t: "We", accent: false },
-  { t: "drive", accent: false },
-  { t: "real", accent: false },
-  { t: "token", accent: false },
+  { t: "The", accent: false },
+  { t: "world's", accent: false },
+  { t: "leading", accent: false },
+  { t: "Web3", accent: true },
   { t: "growth", accent: true },
+  { t: "agency.", accent: false },
 ];
 
 export default function Hero() {
@@ -52,10 +53,10 @@ export default function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
           </span>
-          Crypto-native marketing · Live in 24–48h
+          Trusted by 50+ Web3, crypto &amp; fintech brands
         </motion.div>
 
-        <h1 className="mt-8 max-w-5xl font-display text-[15vw] font-bold leading-[0.9] tracking-tight sm:text-7xl lg:text-[7.5rem]">
+        <h1 className="mt-8 max-w-5xl font-display text-[13vw] font-bold leading-[0.9] tracking-tight sm:text-6xl lg:text-[6.5rem]">
           <span className="flex flex-wrap justify-center gap-x-5">
             {headline.map((w, i) => (
               <span key={i} className="overflow-hidden pb-[0.08em]">
@@ -77,10 +78,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.55 }}
-          className="mt-7 max-w-xl text-balance text-base text-muted sm:text-lg"
+          className="mt-7 max-w-2xl text-balance text-base text-muted sm:text-lg"
         >
-          Not one-off hype. Data-driven influencer campaigns, exchange partnerships,
-          and community engineering that grow volume and cultivate long-term holders.
+          KOL Marketing · PR · Social Media · User Acquisition · Token Launches.
+          We help exchanges, protocols, and Web3 brands scale through creator partnerships,
+          community building, and performance-driven campaigns.
         </motion.p>
 
         <motion.div

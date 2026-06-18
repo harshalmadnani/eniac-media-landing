@@ -3,13 +3,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Check } from "lucide-react";
 import { Reveal, SectionLabel } from "./ui";
 
-const spendRanges = [
-  "Under $20k",
-  "$20k–$50k",
-  "$50k–$100k",
-  "$100k–$250k",
-  "$250k–$500k",
-  "$500k+",
+const serviceOptions = [
+  "KOL Marketing",
+  "User Acquisition",
+  "Community Building",
+  "Social Media Management",
+  "Advisory Services",
+  "Event Marketing",
+  "Custom Services",
 ];
 
 export default function CTA() {
@@ -26,23 +27,23 @@ export default function CTA() {
       <div className="container-px relative">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
-            <SectionLabel index="(07)">Get in touch</SectionLabel>
+            <SectionLabel index="(07)">Contact us</SectionLabel>
             <h2 className="mt-6 max-w-md text-balance font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
-              Ready to <span className="text-lime">scale</span> your token?
+              Let's build something <span className="text-lime">extraordinary</span> together.
             </h2>
             <p className="mt-6 max-w-md text-muted">
-              Tell us where you're stuck. We'll show you what we'd ship in week one —
-              influencer coverage, community engineering, and exchange partnerships, run
-              end to end.
+              Whether you're launching a token, scaling a community, planning a TGE, or
+              running influencer campaigns, our team is ready. We'll review your inquiry and
+              get back within 24–48 hours.
             </p>
-            <div className="mt-10 flex flex-wrap gap-6 text-sm text-muted">
-              <span>A real human reads every message.</span>
-            </div>
-            <div className="mt-8 flex flex-col gap-2 font-mono text-sm">
-              <a href="mailto:hello@eniacmedia.com" className="text-bone hover:text-lime">
-                hello@eniacmedia.com
+            <div className="mt-10 flex flex-col gap-3 font-mono text-sm">
+              <a href="mailto:info@eniacmedia.com" className="text-bone hover:text-lime">
+                info@eniacmedia.com
               </a>
-              <span className="text-muted">Live in 24–48h · 20+ countries</span>
+              <a href="https://t.me/Eniacmedia" target="_blank" rel="noreferrer" className="text-bone hover:text-lime">
+                t.me/Eniacmedia
+              </a>
+              <span className="text-muted">A real human reads every message.</span>
             </div>
           </Reveal>
 
@@ -83,26 +84,26 @@ export default function CTA() {
                     className="flex flex-col gap-4"
                   >
                     <div className="grid gap-4 sm:grid-cols-2">
-                      <Field label="Your name" name="name" placeholder="Satoshi N." />
-                      <Field label="Project / Token" name="project" placeholder="$TOKEN" />
+                      <Field label="Full name" name="name" placeholder="John Doe" />
+                      <Field label="Project / Company" name="project" placeholder="Your project name" />
                     </div>
                     <Field
-                      label="Work email"
+                      label="Email address"
                       name="email"
                       type="email"
-                      placeholder="you@project.xyz"
+                      placeholder="Enter your email address"
                     />
                     <div>
-                      <label className="label-mono">Monthly marketing budget</label>
+                      <label className="label-mono">Service interested in</label>
                       <select
                         required
                         defaultValue=""
                         className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-bone outline-none transition-colors focus:border-lime"
                       >
                         <option value="" disabled>
-                          Select a range
+                          Select a service
                         </option>
-                        {spendRanges.map((r) => (
+                        {serviceOptions.map((r) => (
                           <option key={r} value={r}>
                             {r}
                           </option>
@@ -110,15 +111,15 @@ export default function CTA() {
                       </select>
                     </div>
                     <div>
-                      <label className="label-mono">Where you're stuck</label>
+                      <label className="label-mono">Message</label>
                       <textarea
                         rows={3}
-                        placeholder="Tell us about your launch, volume goals, or community."
+                        placeholder="Tell us about your project, goals, and how we can help."
                         className="mt-2 w-full resize-none rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-bone outline-none transition-colors placeholder:text-muted/60 focus:border-lime"
                       />
                     </div>
                     <button type="submit" className="btn-primary mt-2 w-full">
-                      Book a strategy call <ArrowUpRight size={16} />
+                      Get in touch <ArrowUpRight size={16} />
                     </button>
                   </motion.form>
                 )}

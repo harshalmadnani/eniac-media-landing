@@ -2,10 +2,12 @@ import { Target, Eye } from "lucide-react";
 import { Reveal, SectionLabel, CountUp, AnimatedHeading } from "./ui";
 
 const stats = [
-  { to: 500, suffix: "+", label: "Influencers globally" },
-  { to: 250, suffix: "+", label: "Successful campaigns" },
+  { to: 100, suffix: "+", label: "Successful campaigns" },
+  { to: 5, suffix: "+", label: "Years of experience" },
+  { to: 500, suffix: "K+", label: "Users acquired" },
+  { to: 3000, suffix: "+", label: "KOL partnerships" },
   { to: 20, suffix: "+", label: "Countries reached" },
-  { to: 6, suffix: "+", label: "Years of experience" },
+  { to: 10, suffix: "+", label: "Top-tier exchange clients" },
 ];
 
 export default function About() {
@@ -19,16 +21,17 @@ export default function About() {
         <div className="mt-8 grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <AnimatedHeading
-              text="Pioneering the future of Web3 marketing."
-              accentWords={["Web3", "marketing"]}
+              text="A leading Web3 marketing & growth agency."
+              accentWords={["growth"]}
               className="max-w-2xl font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl"
             />
             <p className="mt-6 max-w-xl text-muted">
-              We're a crypto-native marketing agency helping blockchain startups, tokens,
-              and Web3 projects grow through strategic campaigns and influential voices.
-              With a global network of trusted KOLs and deep roots in Web3, we craft
-              results-driven experiences that spark engagement, drive visibility, and
-              scale your project's impact.
+              ENIAC Media is trusted by 50+ blockchain, crypto, and fintech brands worldwide.
+              We help exchanges, protocols, AI projects, and trading ecosystems accelerate
+              growth through strategic marketing, creator partnerships, community building,
+              and performance-driven campaigns — from leaders like Binance, Bybit, MEXC,
+              Bitget, and CoinDCX to protocols like Covalent, Arcana, Router Protocol, and
+              MIND AI.
             </p>
           </div>
 
@@ -66,13 +69,13 @@ export default function About() {
 
         {/* stat band */}
         <Reveal delay={0.1}>
-          <div className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 lg:grid-cols-4">
+          <div className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3 lg:grid-cols-6">
             {stats.map((s) => (
-              <div key={s.label} className="bg-ink-900 px-6 py-10 text-center sm:py-12">
-                <div className="font-display text-5xl font-bold text-bone sm:text-6xl">
+              <div key={s.label} className="bg-ink-900 px-5 py-9 text-center">
+                <div className="font-display text-4xl font-bold text-bone sm:text-5xl">
                   <CountUp to={s.to} suffix={s.suffix} />
                 </div>
-                <div className="mt-3 text-sm text-muted">{s.label}</div>
+                <div className="mt-3 text-xs text-muted">{s.label}</div>
               </div>
             ))}
           </div>

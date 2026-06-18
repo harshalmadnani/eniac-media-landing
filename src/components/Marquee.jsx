@@ -1,14 +1,14 @@
 const partners = [
   "Binance",
-  "OKX",
   "Bybit",
-  "KuCoin",
-  "Gate.io",
   "MEXC",
   "Bitget",
-  "Uniswap",
-  "CoinGecko",
-  "DexScreener",
+  "CoinDCX",
+  "Covalent",
+  "Arcana",
+  "Router Protocol",
+  "MIND AI",
+  "CoinW",
 ];
 
 export default function Marquee() {
@@ -16,7 +16,7 @@ export default function Marquee() {
     <section className="border-y border-white/10 bg-ink-900 py-8">
       <div className="container-px">
         <p className="mb-7 text-center label-mono">
-          Our partners in the decentralized future
+          Trusted by industry leaders &amp; emerging Web3 ecosystems
         </p>
       </div>
       <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
