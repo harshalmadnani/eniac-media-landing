@@ -34,13 +34,13 @@ export default function CaseStudies() {
         {/* hero metric */}
         <Reveal delay={0.05}>
           <div className="mt-14 grid gap-4 lg:grid-cols-3">
-            <div className="relative overflow-hidden rounded-2xl bg-lime p-8 text-ink-900 lg:col-span-1">
+            <div className="relative overflow-hidden rounded-2xl bg-lime p-8 text-white lg:col-span-1">
               <div className="halftone pointer-events-none absolute inset-0 opacity-20" />
-              <span className="relative font-mono text-xs uppercase tracking-widest text-ink-900/60">
+              <span className="relative font-mono text-xs uppercase tracking-widest text-white/60">
                 Best single campaign
               </span>
               <div className="relative mt-6 font-display text-6xl font-bold sm:text-7xl">+100%</div>
-              <p className="relative mt-4 text-sm text-ink-900/70">
+              <p className="relative mt-4 text-sm text-white/70">
                 Price change on $CTX in a single push, with $600K of fresh volume routed
                 through KOL coverage.
               </p>

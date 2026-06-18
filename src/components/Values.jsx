@@ -41,7 +41,7 @@ export default function Values() {
           {values.map((v, i) => (
             <Reveal key={v.title} delay={i * 0.06}>
               <div className="card group h-full p-7 transition-colors hover:border-lime/30">
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-white/5 text-lime transition-all group-hover:bg-lime group-hover:text-ink-900">
+                <span className="grid h-12 w-12 place-items-center rounded-xl bg-white/5 text-lime transition-all group-hover:bg-lime group-hover:text-white">
                   <v.icon size={20} />
                 </span>
                 <h3 className="mt-6 font-display text-lg font-semibold">{v.title}</h3>

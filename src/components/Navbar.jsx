@@ -36,7 +36,7 @@ export default function Navbar() {
       >
         <nav className="container-px flex h-[72px] items-center justify-between">
           <a href="#top" className="flex items-center gap-2.5">
-            <span className="grid h-9 w-9 place-items-center rounded-lg bg-lime font-display text-lg font-bold text-ink-900">
+            <span className="grid h-9 w-9 place-items-center rounded-lg bg-lime font-display text-lg font-bold text-white">
               E
             </span>
             <span className="font-display text-lg font-semibold tracking-tight">

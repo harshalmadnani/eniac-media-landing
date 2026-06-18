@@ -42,30 +42,30 @@ function Token() {
       {/* outer glowing wireframe shell */}
       <mesh ref={outer}>
         <icosahedronGeometry args={[1.7, 1]} />
-        <meshBasicMaterial color="#cdfd50" transparent opacity={0.03} />
-        <Edges color="#cdfd50" threshold={1} />
+        <meshBasicMaterial color="#8b5cff" transparent opacity={0.03} />
+        <Edges color="#8b5cff" threshold={1} />
       </mesh>
 
       {/* inner counter-rotating frame */}
       <mesh ref={mid}>
         <icosahedronGeometry args={[1.15, 0]} />
-        <meshBasicMaterial color="#3df2a1" transparent opacity={0.04} />
-        <Edges color="#3df2a1" threshold={1} />
+        <meshBasicMaterial color="#c4b5fd" transparent opacity={0.04} />
+        <Edges color="#c4b5fd" threshold={1} />
       </mesh>
 
       {/* bright pulsing core */}
       <mesh ref={core}>
         <icosahedronGeometry args={[0.42, 0]} />
-        <meshBasicMaterial color="#eaffb0" toneMapped={false} />
+        <meshBasicMaterial color="#d9ccff" toneMapped={false} />
       </mesh>
 
       {/* soft additive glow halo around the core */}
       <mesh ref={glow}>
         <sphereGeometry args={[0.75, 32, 32]} />
         <meshBasicMaterial
-          color="#cdfd50"
+          color="#8b5cff"
           transparent
-          opacity={0.16}
+          opacity={0.18}
           blending={AdditiveBlending}
           depthWrite={false}
           toneMapped={false}
@@ -74,7 +74,7 @@ function Token() {
 
       {/* elegant thin orbiting ring */}
       <Torus ref={ring} args={[2.45, 0.008, 16, 160]}>
-        <meshBasicMaterial color="#cdfd50" toneMapped={false} />
+        <meshBasicMaterial color="#a07dff" toneMapped={false} />
       </Torus>
     </Float>
   );

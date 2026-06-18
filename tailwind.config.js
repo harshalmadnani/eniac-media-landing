@@ -13,11 +13,12 @@ export default {
         },
         bone: "#f4f1ea",
         muted: "#8b9099",
+        // accent kept under the "lime" key so utilities flip globally; value is purple
         lime: {
-          DEFAULT: "#cdfd50",
-          400: "#d6ff66",
+          DEFAULT: "#8b5cff",
+          400: "#a07dff",
         },
-        mint: "#3df2a1",
+        mint: "#c4b5fd",
       },
       fontFamily: {
         display: ["'Space Grotesk'", "sans-serif"],

@@ -66,7 +66,7 @@ export default function Services() {
                 <div className="halftone pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-30" />
                 <div className="relative">
                   <div className="flex items-center justify-between">
-                    <span className="grid h-12 w-12 place-items-center rounded-xl border border-white/10 bg-white/5 text-lime transition-colors group-hover:bg-lime group-hover:text-ink-900">
+                    <span className="grid h-12 w-12 place-items-center rounded-xl border border-white/10 bg-white/5 text-lime transition-colors group-hover:bg-lime group-hover:text-white">
                       <s.icon size={20} />
                     </span>
                     <span className="font-mono text-sm text-white/20">
@@ -85,9 +85,9 @@ export default function Services() {
           <Reveal delay={services.length * 0.06}>
             <a
               href="#contact"
-              className="flex h-full flex-col justify-between rounded-2xl bg-lime p-7 text-ink-900 transition-transform hover:scale-[1.01]"
+              className="flex h-full flex-col justify-between rounded-2xl bg-lime p-7 text-white transition-transform hover:scale-[1.01]"
             >
-              <span className="font-mono text-sm text-ink-900/50">06</span>
+              <span className="font-mono text-sm text-white/50">06</span>
               <div>
                 <h3 className="font-display text-2xl font-semibold leading-tight">
                   Not sure which fits? Let's map it together.
