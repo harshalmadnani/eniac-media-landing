@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Megaphone, Users, Star, Gift, Rocket, ArrowUpRight } from "lucide-react";
-import { Reveal, SectionLabel } from "./ui";
+import { Reveal, SectionLabel, AnimatedHeading } from "./ui";
 
 const services = [
   {
@@ -42,9 +42,11 @@ export default function Services() {
         <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <Reveal>
             <SectionLabel index="(02)">What we do</SectionLabel>
-            <h2 className="mt-6 max-w-xl text-balance font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl">
-              Services engineered for token growth.
-            </h2>
+            <AnimatedHeading
+              text="Services engineered for token growth."
+              accentWords={["growth"]}
+              className="mt-6 max-w-xl font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl"
+            />
           </Reveal>
           <Reveal delay={0.1}>
             <a href="#contact" className="btn-ghost shrink-0">

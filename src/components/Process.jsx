@@ -1,4 +1,4 @@
-import { Reveal, SectionLabel } from "./ui";
+import { Reveal, SectionLabel, AnimatedHeading } from "./ui";
 
 const steps = [
   {
@@ -35,9 +35,11 @@ export default function Process() {
       <div className="container-px relative">
         <Reveal>
           <SectionLabel index="(03)">How it works</SectionLabel>
-          <h2 className="mt-6 max-w-xl text-balance font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl">
-            From first message to live campaign.
-          </h2>
+          <AnimatedHeading
+            text="From first message to live campaign."
+            accentWords={["live", "campaign"]}
+            className="mt-6 max-w-xl font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl"
+          />
         </Reveal>
 
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">

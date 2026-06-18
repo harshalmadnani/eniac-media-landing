@@ -49,8 +49,8 @@ function Token() {
       {/* inner counter-rotating frame */}
       <mesh ref={mid}>
         <icosahedronGeometry args={[1.15, 0]} />
-        <meshBasicMaterial color="#7c5cff" transparent opacity={0.04} />
-        <Edges color="#9d86ff" threshold={1} />
+        <meshBasicMaterial color="#3df2a1" transparent opacity={0.04} />
+        <Edges color="#3df2a1" threshold={1} />
       </mesh>
 
       {/* bright pulsing core */}

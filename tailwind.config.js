@@ -17,7 +17,7 @@ export default {
           DEFAULT: "#cdfd50",
           400: "#d6ff66",
         },
-        electric: "#7c5cff",
+        mint: "#3df2a1",
       },
       fontFamily: {
         display: ["'Space Grotesk'", "sans-serif"],

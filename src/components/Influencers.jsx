@@ -1,4 +1,4 @@
-import { Reveal, SectionLabel } from "./ui";
+import { Reveal, SectionLabel, AnimatedHeading } from "./ui";
 
 const rowA = [
   "Crypto Rover",
@@ -21,7 +21,7 @@ const rowB = [
   "Crypto Rover",
 ];
 
-const palette = ["bg-lime/15 text-lime", "bg-electric/20 text-electric", "bg-white/10 text-bone"];
+const palette = ["bg-lime/15 text-lime", "bg-mint/15 text-mint", "bg-white/10 text-bone"];
 
 function Chip({ name, i }) {
   const initials = name
@@ -63,9 +63,11 @@ export default function Influencers() {
       <div className="container-px">
         <Reveal>
           <SectionLabel index="(05)">The network</SectionLabel>
-          <h2 className="mt-6 max-w-2xl text-balance font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl">
-            500+ voices your audience already trusts.
-          </h2>
+          <AnimatedHeading
+            text="500+ voices your audience already trusts."
+            accentWords={["500+"]}
+            className="mt-6 max-w-2xl font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl"
+          />
           <p className="mt-5 max-w-xl text-muted">
             A handpicked roster of crypto-native KOLs across YouTube, X, Telegram, and
             Instagram — selected by niche fit and community quality, not just follower count.

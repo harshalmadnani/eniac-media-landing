@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 
 export function Reveal({ children, delay = 0, y = 24, className = "" }) {
   return (
@@ -22,6 +22,70 @@ export function SectionLabel({ index, children }) {
       {index && <span className="font-mono text-xs text-lime">{index}</span>}
       <span className="label-mono">{children}</span>
     </div>
+  );
+}
+
+// Heading that reveals word-by-word with a clip-up motion when scrolled into view
+export function AnimatedHeading({ text, className = "", as = "h2", accentWords = [] }) {
+  const Tag = motion[as];
+  const words = text.split(" ");
+  return (
+    <Tag
+      className={className}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-80px" }}
+      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06 } } }}
+    >
+      {words.map((w, i) => {
+        const accent = accentWords.includes(w.replace(/[.,]/g, ""));
+        return (
+          <span key={i} className="inline-block overflow-hidden pb-[0.06em] align-top">
+            <motion.span
+              className={`inline-block ${accent ? "text-lime" : ""}`}
+              variants={{ hidden: { y: "110%" }, show: { y: 0 } }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {w}
+            </motion.span>
+            {i < words.length - 1 && "\u00A0"}
+          </span>
+        );
+      })}
+    </Tag>
+  );
+}
+
+// Big statement whose words brighten from muted -> bone as you scroll through it
+function HighlightWord({ children, progress, range }) {
+  const opacity = useTransform(progress, range, [0.12, 1]);
+  const color = useTransform(progress, range, ["#5b606a", "#f4f1ea"]);
+  return (
+    <span className="relative mr-[0.28em] inline-block">
+      <motion.span style={{ opacity, color }}>{children}</motion.span>
+    </span>
+  );
+}
+
+export function ScrollHighlight({ text, className = "" }) {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 0.85", "end 0.45"],
+  });
+  const words = text.split(" ");
+  return (
+    <p ref={ref} className={`flex flex-wrap ${className}`}>
+      {words.map((w, i) => {
+        const start = i / words.length;
+        const end = start + 1 / words.length;
+        return (
+          <HighlightWord key={i} progress={scrollYProgress} range={[start, end]}>
+            {w}
+          </HighlightWord>
+        );
+      })}
+    </p>
   );
 }
 

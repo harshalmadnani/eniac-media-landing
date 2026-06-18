@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { TrendingUp, ArrowUpRight } from "lucide-react";
-import { Reveal, SectionLabel } from "./ui";
+import { Reveal, SectionLabel, AnimatedHeading } from "./ui";
 
 const cases = [
   { token: "$CTX", type: "Pump", change: "+100%", volume: "$600K", date: "02/12/2024" },
@@ -18,9 +18,11 @@ export default function CaseStudies() {
         <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <Reveal>
             <SectionLabel index="(04)">Proven in the wild</SectionLabel>
-            <h2 className="mt-6 max-w-xl text-balance font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl">
-              Real campaigns. Real numbers.
-            </h2>
+            <AnimatedHeading
+              text="Real campaigns. Real numbers."
+              accentWords={["numbers"]}
+              className="mt-6 max-w-xl font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl"
+            />
           </Reveal>
           <Reveal delay={0.1}>
             <a href="#contact" className="btn-ghost shrink-0">

@@ -1,5 +1,5 @@
 import { Target, Eye } from "lucide-react";
-import { Reveal, SectionLabel, CountUp } from "./ui";
+import { Reveal, SectionLabel, CountUp, AnimatedHeading } from "./ui";
 
 const stats = [
   { to: 500, suffix: "+", label: "Influencers globally" },
@@ -17,11 +17,12 @@ export default function About() {
         </Reveal>
 
         <div className="mt-8 grid gap-12 lg:grid-cols-12">
-          <Reveal className="lg:col-span-7">
-            <h2 className="max-w-2xl text-balance font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl">
-              Pioneering the future of{" "}
-              <span className="text-lime">Web3 marketing.</span>
-            </h2>
+          <div className="lg:col-span-7">
+            <AnimatedHeading
+              text="Pioneering the future of Web3 marketing."
+              accentWords={["Web3", "marketing"]}
+              className="max-w-2xl font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl"
+            />
             <p className="mt-6 max-w-xl text-muted">
               We're a crypto-native marketing agency helping blockchain startups, tokens,
               and Web3 projects grow through strategic campaigns and influential voices.
@@ -29,7 +30,7 @@ export default function About() {
               results-driven experiences that spark engagement, drive visibility, and
               scale your project's impact.
             </p>
-          </Reveal>
+          </div>
 
           <div className="grid gap-4 lg:col-span-5">
             <Reveal delay={0.05}>
@@ -49,7 +50,7 @@ export default function About() {
             <Reveal delay={0.12}>
               <div className="card p-6">
                 <div className="flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center rounded-lg bg-electric/15 text-electric">
+                  <span className="grid h-10 w-10 place-items-center rounded-lg bg-mint/15 text-mint">
                     <Eye size={18} />
                   </span>
                   <h3 className="font-display text-lg font-semibold">Our Vision</h3>

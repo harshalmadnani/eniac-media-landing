@@ -1,5 +1,5 @@
 import { Network, BarChart3, Zap, Globe2 } from "lucide-react";
-import { Reveal, SectionLabel } from "./ui";
+import { Reveal, SectionLabel, AnimatedHeading } from "./ui";
 
 const values = [
   {
@@ -30,9 +30,11 @@ export default function Values() {
       <div className="container-px">
         <Reveal>
           <SectionLabel index="(06)">Why Eniac</SectionLabel>
-          <h2 className="mt-6 max-w-xl text-balance font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl">
-            Upholding values that define us.
-          </h2>
+          <AnimatedHeading
+            text="Upholding values that define us."
+            accentWords={["define", "us"]}
+            className="mt-6 max-w-xl font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl"
+          />
         </Reveal>
 
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

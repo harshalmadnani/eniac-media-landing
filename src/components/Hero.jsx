@@ -27,16 +27,18 @@ export default function Hero() {
       {/* ambient glows */}
       <div className="grid-lines pointer-events-none absolute inset-0 opacity-40" />
       <div className="pointer-events-none absolute left-1/2 top-1/3 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-lime/10 blur-[160px]" />
-      <div className="pointer-events-none absolute right-0 top-1/2 h-[360px] w-[360px] rounded-full bg-electric/10 blur-[140px]" />
+      <div className="pointer-events-none absolute right-0 top-1/2 h-[360px] w-[360px] rounded-full bg-mint/10 blur-[140px]" />
 
       {/* 3D centerpiece behind the text */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="h-[78vh] w-full max-w-[1100px] opacity-90">
+        <div className="h-[80vh] w-full max-w-[1000px] opacity-80">
           <Suspense fallback={null}>
             <Scene3D />
           </Suspense>
         </div>
       </div>
+      {/* contrast scrim so the headline stays readable over the 3D */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_45%_at_center,rgba(8,9,11,0.72)_0%,rgba(8,9,11,0)_70%)]" />
 
       <div className="container-px relative flex min-h-[100svh] flex-col items-center justify-center pt-28 pb-16 text-center">
         <motion.div
