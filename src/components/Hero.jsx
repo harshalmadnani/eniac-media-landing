@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Download } from "lucide-react";
+import { SmartLink } from "../lib/SmartLink";
 
 const Scene3D = lazy(() => import("./Scene3D"));
 
@@ -88,12 +89,12 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="mt-9 flex flex-col items-center gap-3 sm:flex-row"
         >
-          <a href="#contact" className="btn-primary w-full sm:w-auto">
+          <SmartLink to="#contact" className="btn-primary w-full sm:w-auto">
             Book a strategy call <ArrowUpRight size={16} />
-          </a>
-          <a href="#work" className="btn-ghost w-full bg-ink-900/40 backdrop-blur-md sm:w-auto">
+          </SmartLink>
+          <SmartLink to="/work" className="btn-ghost w-full bg-ink-900/40 backdrop-blur-md sm:w-auto">
             <Download size={16} /> View case studies
-          </a>
+          </SmartLink>
         </motion.div>
       </div>
 

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import { SmartLink } from "../lib/SmartLink";
 
 const links = [
   { label: "Services", href: "#services" },
   { label: "Process", href: "#process" },
-  { label: "Case Studies", href: "#work" },
+  { label: "Case Studies", href: "/work" },
   { label: "Network", href: "#network" },
 ];
 
@@ -35,31 +36,31 @@ export default function Navbar() {
         }`}
       >
         <nav className="container-px flex h-[72px] items-center justify-between">
-          <a href="#top" className="flex items-center gap-2.5">
+          <SmartLink to="#top" className="flex items-center gap-2.5">
             <span className="grid h-9 w-9 place-items-center rounded-lg bg-lime font-display text-lg font-bold text-white">
               E
             </span>
             <span className="font-display text-lg font-semibold tracking-tight">
               Eniac<span className="text-lime">Media</span>
             </span>
-          </a>
+          </SmartLink>
 
           <div className="hidden items-center gap-8 md:flex">
             {links.map((l) => (
-              <a
+              <SmartLink
                 key={l.href}
-                href={l.href}
+                to={l.href}
                 className="text-sm text-muted transition-colors hover:text-bone"
               >
                 {l.label}
-              </a>
+              </SmartLink>
             ))}
           </div>
 
           <div className="hidden md:block">
-            <a href="#contact" className="btn-primary">
+            <SmartLink to="#contact" className="btn-primary">
               Book a Call <ArrowUpRight size={16} />
-            </a>
+            </SmartLink>
           </div>
 
           <button
@@ -82,22 +83,22 @@ export default function Navbar() {
           >
             <div className="container-px flex flex-col gap-1 py-4">
               {links.map((l) => (
-                <a
+                <SmartLink
                   key={l.href}
-                  href={l.href}
+                  to={l.href}
                   onClick={() => setOpen(false)}
                   className="rounded-lg px-3 py-3 text-sm text-muted hover:bg-white/5 hover:text-bone"
                 >
                   {l.label}
-                </a>
+                </SmartLink>
               ))}
-              <a
-                href="#contact"
+              <SmartLink
+                to="#contact"
                 onClick={() => setOpen(false)}
                 className="btn-primary mt-2"
               >
                 Book a Call <ArrowUpRight size={16} />
-              </a>
+              </SmartLink>
             </div>
           </motion.div>
         )}

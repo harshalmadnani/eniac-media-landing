@@ -1,40 +1,15 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { TrendingUp, ArrowUpRight } from "lucide-react";
 import { Reveal, SectionLabel, AnimatedHeading } from "./ui";
-
-const cases = [
-  { token: "$CTX", img: "/tokens/ctx.png", type: "Pump", change: "+100%", volume: "$600K", date: "02/12/2024" },
-  { token: "$Router", img: "/tokens/router.jpg", type: "Push", change: "+10%", volume: "$600K", date: "Mar 2025" },
-  { token: "$XAR", img: null, type: "Push", change: "+30%", volume: "$300K", date: "Apr 2025" },
-  { token: "$CXT", img: "/tokens/cxt.png", type: "Pump", change: "+100%", volume: "$600K", date: "May 2025" },
-  { token: "$CXT", img: "/tokens/cxt.png", type: "Push", change: "+20%", volume: "$1M", date: "May–Jun 2025" },
-  { token: "$MindAI", img: "/tokens/mindai.jpg", type: "Push", change: "+50%", volume: "$120K", date: "May–Jun 2025" },
-];
-
-function TokenCoin({ token, img }) {
-  const [failed, setFailed] = useState(!img);
-  const ticker = token.replace("$", "");
-  return (
-    <span className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-full border border-white/10 bg-ink-700">
-      {failed ? (
-        <span className="bg-gradient-to-br from-lime to-mint bg-clip-text font-display text-[10px] font-bold text-transparent">
-          {ticker.slice(0, 3)}
-        </span>
-      ) : (
-        <img
-          src={img}
-          alt={token}
-          loading="lazy"
-          onError={() => setFailed(true)}
-          className="h-full w-full object-cover"
-        />
-      )}
-    </span>
-  );
-}
+import { SmartLink } from "../lib/SmartLink";
+import TokenCoin from "./TokenCoin";
+import Sparkline from "./Sparkline";
+import { cases } from "../data/cases";
 
 export default function CaseStudies() {
+  const featured = cases.find((c) => c.featured) || cases[0];
+  const rest = cases.filter((c) => c.id !== featured.id).slice(0, 4);
+
   return (
     <section id="work" className="relative py-24 sm:py-32">
       <div className="container-px">
@@ -48,58 +23,70 @@ export default function CaseStudies() {
             />
           </Reveal>
           <Reveal delay={0.1}>
-            <a href="#contact" className="btn-ghost shrink-0">
+            <SmartLink to="/work" className="btn-ghost shrink-0">
               See all case studies <ArrowUpRight size={16} />
-            </a>
+            </SmartLink>
           </Reveal>
         </div>
 
-        {/* hero metric */}
-        <Reveal delay={0.05}>
-          <div className="mt-14 grid gap-4 lg:grid-cols-3">
-            <div className="relative overflow-hidden rounded-2xl bg-lime p-8 text-white lg:col-span-1">
+        <div className="mt-14 grid gap-4 lg:grid-cols-3">
+          {/* featured campaign */}
+          <Reveal className="lg:col-span-1">
+            <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-2xl bg-lime p-8 text-white">
               <div className="halftone pointer-events-none absolute inset-0 opacity-20" />
-              <span className="relative font-mono text-xs uppercase tracking-widest text-white/60">
-                Best single campaign
-              </span>
-              <div className="relative mt-6 font-display text-6xl font-bold sm:text-7xl">+100%</div>
-              <p className="relative mt-4 text-sm text-white/70">
-                Price change on $CTX in a single push, with $600K of fresh volume routed
-                through KOL coverage.
-              </p>
+              <div className="relative flex items-center gap-3">
+                <TokenCoin token={featured.token} img={featured.img} size={40} />
+                <div>
+                  <div className="font-display font-semibold leading-none">{featured.token}</div>
+                  <div className="text-xs text-white/70">{featured.name}</div>
+                </div>
+              </div>
+              <div className="relative">
+                <div className="mt-8 font-display text-6xl font-bold sm:text-7xl">
+                  {featured.change}
+                </div>
+                <p className="mt-4 text-sm text-white/80">{featured.summary}</p>
+              </div>
             </div>
+          </Reveal>
 
-            <div className="grid grid-cols-2 gap-4 lg:col-span-2">
-              {cases.map((c, i) => (
+          {/* grid of campaigns */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-2">
+            {rest.map((c, i) => (
+              <Reveal key={c.id} delay={i * 0.06}>
                 <motion.div
-                  key={c.token + i}
                   whileHover={{ y: -4 }}
                   transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                  className="card flex flex-col justify-between p-5"
+                  className="card flex h-full flex-col justify-between p-5"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <TokenCoin token={c.token} img={c.img} />
-                      <span className="font-display text-lg font-semibold">{c.token}</span>
+                      <TokenCoin token={c.token} img={c.img} size={32} />
+                      <span className="font-display text-base font-semibold">{c.token}</span>
                     </div>
                     <span className="rounded-full border border-white/10 px-2.5 py-0.5 text-[10px] uppercase tracking-wider text-muted">
                       {c.type}
                     </span>
                   </div>
-                  <div className="mt-6 flex items-end justify-between">
+
+                  <div className="my-4 h-10">
+                    <Sparkline data={c.series} height={40} />
+                  </div>
+
+                  <div className="flex items-end justify-between">
                     <div>
-                      <div className="flex items-center gap-1 font-display text-2xl font-bold text-lime">
-                        <TrendingUp size={18} /> {c.change}
+                      <div className="flex items-center gap-1 font-display text-xl font-bold text-lime">
+                        <TrendingUp size={16} /> {c.change}
                       </div>
                       <div className="mt-1 text-xs text-muted">Vol {c.volume}</div>
                     </div>
                     <span className="text-[11px] text-muted">{c.date}</span>
                   </div>
                 </motion.div>
-              ))}
-            </div>
+              </Reveal>
+            ))}
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

@@ -1,3 +1,5 @@
+import { SmartLink } from "../lib/SmartLink";
+
 const Svg = ({ children }) => (
   <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden>
     {children}
@@ -55,11 +57,22 @@ const socials = [
 const cols = [
   {
     title: "Services",
-    links: ["Token Promotion", "Community Building", "KOL Marketing", "Airdrop Marketing", "Presale Marketing"],
+    links: [
+      { label: "Token Promotion", to: "#services" },
+      { label: "Community Building", to: "#services" },
+      { label: "KOL Marketing", to: "#services" },
+      { label: "Airdrop Marketing", to: "#services" },
+      { label: "Presale Marketing", to: "#services" },
+    ],
   },
   {
     title: "Company",
-    links: ["About", "Case Studies", "The Network", "Careers"],
+    links: [
+      { label: "About", to: "#about" },
+      { label: "Case Studies", to: "/work" },
+      { label: "The Network", to: "#network" },
+      { label: "Careers", to: "#contact" },
+    ],
   },
 ];
 
@@ -69,23 +82,23 @@ export default function Footer() {
       <div className="container-px py-16">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <a href="#top" className="flex items-center gap-2.5">
+            <SmartLink to="#top" className="flex items-center gap-2.5">
               <span className="grid h-9 w-9 place-items-center rounded-lg bg-lime font-display text-lg font-bold text-white">
                 E
               </span>
               <span className="font-display text-lg font-semibold tracking-tight">
                 Eniac<span className="text-lime">Media</span>
               </span>
-            </a>
+            </SmartLink>
             <p className="mt-6 max-w-sm text-balance font-display text-2xl font-medium leading-snug">
               Embrace the future of Web3 and blockchain.
             </p>
             <p className="mt-4 max-w-sm text-sm text-muted">
               Let's collaborate to shape a future where opportunities are limitless.
             </p>
-            <a href="#contact" className="btn-primary mt-8">
+            <SmartLink to="#contact" className="btn-primary mt-8">
               Book a free strategy call
-            </a>
+            </SmartLink>
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
@@ -94,10 +107,10 @@ export default function Footer() {
                 <h4 className="label-mono">{c.title}</h4>
                 <ul className="mt-5 space-y-3">
                   {c.links.map((l) => (
-                    <li key={l}>
-                      <a href="#contact" className="text-sm text-muted transition-colors hover:text-bone">
-                        {l}
-                      </a>
+                    <li key={l.label}>
+                      <SmartLink to={l.to} className="text-sm text-muted transition-colors hover:text-bone">
+                        {l.label}
+                      </SmartLink>
                     </li>
                   ))}
                 </ul>
@@ -126,7 +139,7 @@ export default function Footer() {
           <div className="flex gap-6">
             <a href="#" className="hover:text-bone">Privacy</a>
             <a href="#" className="hover:text-bone">Terms</a>
-            <a href="#contact" className="hover:text-bone">Contact</a>
+            <SmartLink to="#contact" className="hover:text-bone">Contact</SmartLink>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Megaphone, Users, Star, Gift, Rocket, ArrowUpRight } from "lucide-react";
 import { Reveal, SectionLabel, AnimatedHeading } from "./ui";
+import { SmartLink } from "../lib/SmartLink";
 
 const services = [
   {
@@ -49,9 +50,9 @@ export default function Services() {
             />
           </Reveal>
           <Reveal delay={0.1}>
-            <a href="#contact" className="btn-ghost shrink-0">
+            <SmartLink to="#contact" className="btn-ghost shrink-0">
               Start a campaign <ArrowUpRight size={16} />
-            </a>
+            </SmartLink>
           </Reveal>
         </div>
 
@@ -83,8 +84,8 @@ export default function Services() {
 
           {/* CTA card filling the grid */}
           <Reveal delay={services.length * 0.06}>
-            <a
-              href="#contact"
+            <SmartLink
+              to="#contact"
               className="flex h-full flex-col justify-between rounded-2xl bg-lime p-7 text-white transition-transform hover:scale-[1.01]"
             >
               <span className="font-mono text-sm text-white/50">06</span>
@@ -96,7 +97,7 @@ export default function Services() {
                   Book a free strategy call <ArrowUpRight size={16} />
                 </span>
               </div>
-            </a>
+            </SmartLink>
           </Reveal>
         </div>
       </div>
