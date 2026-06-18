@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-ink-900 text-bone font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-lime text-ink-900;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8;
+  }
+
+  .label-mono {
+    @apply font-mono text-[11px] uppercase tracking-[0.28em] text-muted;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-lime px-6 py-3
+      text-sm font-semibold text-ink-900 transition-all duration-300
+      hover:bg-lime-400 hover:shadow-[0_0_40px_-6px_rgba(205,253,80,0.6)];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15
+      px-6 py-3 text-sm font-semibold text-bone transition-all duration-300
+      hover:border-white/40 hover:bg-white/5;
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/10 bg-ink-800/60 backdrop-blur-sm;
+  }
+
+  .grid-lines {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .halftone {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 14px 14px;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* thin custom scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0b0d;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2f38;
+  border-radius: 9px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cdfd50;
+}
