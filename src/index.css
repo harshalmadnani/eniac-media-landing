@@ -8,8 +8,19 @@
   }
 
   html {
-    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+  }
+
+  /* Lenis smooth scroll */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
   }
 
   body {
@@ -34,17 +45,19 @@
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-full bg-lime px-7 py-3
       text-sm font-semibold text-white transition-all duration-300
-      hover:bg-lime-400 hover:shadow-[0_0_44px_-8px_rgba(139,92,255,0.7)];
+      hover:-translate-y-0.5 hover:bg-lime-400 hover:shadow-[0_14px_44px_-10px_rgba(139,92,255,0.8)];
   }
 
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2 rounded-full border border-lime/30
       px-7 py-3 text-sm font-semibold text-bone transition-all duration-300
-      hover:border-lime/70 hover:bg-lime/5;
+      hover:-translate-y-0.5 hover:border-lime/70 hover:bg-lime/5;
   }
 
   .card {
-    @apply rounded-2xl border border-white/[0.07] bg-ink-800/50 backdrop-blur-sm;
+    @apply rounded-2xl border border-white/[0.07] bg-ink-800/50 backdrop-blur-sm
+      transition-all duration-500 ease-out
+      hover:border-lime/25 hover:shadow-[0_30px_80px_-50px_rgba(139,92,255,0.65)];
   }
 
   .grid-lines {

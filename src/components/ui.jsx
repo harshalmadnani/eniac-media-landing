@@ -1,15 +1,31 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView, useScroll, useTransform, useSpring } from "framer-motion";
 
-export function Reveal({ children, delay = 0, y = 24, className = "" }) {
+export function Reveal({ children, delay = 0, y = 28, className = "" }) {
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
+      initial={{ opacity: 0, y, filter: "blur(10px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, margin: "-90px" }}
       transition={{ duration: 1.1, delay, ease: [0.16, 1, 0.3, 1] }}
     >
+      {children}
+    </motion.div>
+  );
+}
+
+// Scroll-linked vertical parallax. `speed` = px of travel across the viewport pass.
+export function Parallax({ children, speed = 60, className = "" }) {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const yRaw = useTransform(scrollYProgress, [0, 1], [speed, -speed]);
+  const y = useSpring(yRaw, { stiffness: 90, damping: 28, restDelta: 0.001 });
+  return (
+    <motion.div ref={ref} style={{ y }} className={className}>
       {children}
     </motion.div>
   );

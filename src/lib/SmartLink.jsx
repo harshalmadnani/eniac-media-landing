@@ -12,10 +12,15 @@ export function SmartLink({ to, className = "", children, onClick }) {
       e.preventDefault();
       onClick?.();
       const doScroll = () => {
+        const lenis = window.__lenis;
         if (!id) {
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          if (lenis) lenis.scrollTo(0);
+          else window.scrollTo({ top: 0, behavior: "smooth" });
         } else {
-          document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+          const el = document.getElementById(id);
+          if (!el) return;
+          if (lenis) lenis.scrollTo(el, { offset: -72 });
+          else el.scrollIntoView({ behavior: "smooth" });
         }
       };
       if (location.pathname !== "/") {

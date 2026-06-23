@@ -1,4 +1,4 @@
-import { Reveal, SectionLabel, AnimatedHeading } from "./ui";
+import { Reveal, SectionLabel, AnimatedHeading, Parallax } from "./ui";
 
 const imgs = [
   "crypto-rover.avif", "datadash.webp", "altcoin-daily.webp", "crypto-banter.webp",
@@ -45,11 +45,13 @@ export default function Showreel() {
       {/* creator montage */}
       <Reveal delay={0.1}>
         <div className="relative mt-12">
-          <div className="relative mx-auto flex max-w-[1400px] flex-col gap-4 overflow-hidden px-4 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
-            <Row slice={imgs.slice(0, 8)} />
-            <Row slice={imgs.slice(4, 12)} reverse />
-            <Row slice={imgs.slice(8, 16)} />
-          </div>
+          <Parallax speed={45}>
+            <div className="relative mx-auto flex max-w-[1400px] flex-col gap-4 overflow-hidden px-4 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+              <Row slice={imgs.slice(0, 8)} />
+              <Row slice={imgs.slice(4, 12)} reverse />
+              <Row slice={imgs.slice(8, 16)} />
+            </div>
+          </Parallax>
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(8,9,11,0.45)_0%,transparent_70%)]" />
         </div>
       </Reveal>

@@ -3,11 +3,13 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Work from "./pages/Work";
 import Creators from "./pages/Creators";
+import SmoothScroll from "./components/SmoothScroll";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
+    if (window.__lenis) window.__lenis.scrollTo(0, { immediate: true });
+    else window.scrollTo({ top: 0, behavior: "instant" });
   }, [pathname]);
   return null;
 }
@@ -15,6 +17,7 @@ function ScrollToTop() {
 export default function App() {
   return (
     <>
+      <SmoothScroll />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
