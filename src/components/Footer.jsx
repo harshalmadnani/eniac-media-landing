@@ -44,6 +44,7 @@ const cols = [
       { label: "About", to: "#about" },
       { label: "Services", to: "#services" },
       { label: "Case Studies", to: "/work" },
+      { label: "Creators Program", to: "/creators" },
       { label: "Network", to: "#network" },
     ],
   },
