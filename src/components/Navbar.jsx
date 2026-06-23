@@ -36,13 +36,8 @@ export default function Navbar() {
         }`}
       >
         <nav className="container-px flex h-[72px] items-center justify-between">
-          <SmartLink to="#top" className="flex items-center gap-2.5">
-            <span className="grid h-9 w-9 place-items-center rounded-lg bg-lime font-display text-lg font-bold text-white">
-              E
-            </span>
-            <span className="font-display text-lg font-semibold tracking-tight">
-              Eniac<span className="text-lime">Media</span>
-            </span>
+          <SmartLink to="#top" className="flex items-center">
+            <img src="/brand/eniac-logo.svg" alt="ENIAC Media" className="h-7 w-auto sm:h-8" />
           </SmartLink>
 
           <div className="hidden items-center gap-8 md:flex">

@@ -73,13 +73,8 @@ export default function Footer() {
       <div className="container-px py-16">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <SmartLink to="#top" className="flex items-center gap-2.5">
-              <span className="grid h-9 w-9 place-items-center rounded-lg bg-lime font-display text-lg font-bold text-white">
-                E
-              </span>
-              <span className="font-display text-lg font-semibold tracking-tight">
-                Eniac<span className="text-lime">Media</span>
-              </span>
+            <SmartLink to="#top" className="flex items-center">
+              <img src="/brand/eniac-logo.svg" alt="ENIAC Media" className="h-8 w-auto" />
             </SmartLink>
             <p className="mt-6 max-w-sm text-balance font-display text-2xl font-medium leading-snug">
               Embrace the future of Web3 &amp; blockchain.
