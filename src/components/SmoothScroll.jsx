@@ -4,7 +4,11 @@ import Lenis from "lenis";
 // Buttery smooth scrolling, exposed on window.__lenis for router + anchor sync.
 export default function SmoothScroll() {
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Only run momentum scroll on devices with a precise pointer (desktop).
+    // Touch devices keep native scrolling so mobile is never hijacked.
+    const finePointer = window.matchMedia("(pointer: fine)").matches;
+    if (reduce || !finePointer) return;
 
     const lenis = new Lenis({
       duration: 1.15,
