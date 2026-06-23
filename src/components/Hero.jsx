@@ -2,8 +2,23 @@ import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Download } from "lucide-react";
 import { SmartLink } from "../lib/SmartLink";
+import ErrorBoundary from "./ErrorBoundary";
 
 const Scene3D = lazy(() => import("./Scene3D"));
+
+function VisualFallback() {
+  return (
+    <div className="absolute inset-0 grid place-items-center">
+      <div className="h-48 w-48 animate-pulseglow rounded-full bg-[radial-gradient(circle,rgba(139,92,255,0.5),transparent_70%)] blur-2xl" />
+      <img
+        src="/brand/eniac-icon.png"
+        alt=""
+        aria-hidden
+        className="absolute h-20 w-20 animate-floaty opacity-90"
+      />
+    </div>
+  );
+}
 
 const word = {
   hidden: { opacity: 0, y: "0.7em" },
@@ -116,9 +131,12 @@ export default function Hero() {
         >
           <div className="gradient-border relative h-full w-full overflow-hidden rounded-[28px] border border-white/10 bg-ink-800/30 backdrop-blur-sm">
             <div className="halftone absolute inset-0 opacity-[0.12]" />
-            <Suspense fallback={null}>
-              <Scene3D />
-            </Suspense>
+            <VisualFallback />
+            <ErrorBoundary fallback={null}>
+              <Suspense fallback={null}>
+                <Scene3D />
+              </Suspense>
+            </ErrorBoundary>
             {/* floating status chip */}
             <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-white/10 bg-ink-900/60 px-3 py-1.5 text-[11px] text-muted backdrop-blur-md">
               <span className="h-1.5 w-1.5 rounded-full bg-lime" /> 2,000+ KOLs · live network

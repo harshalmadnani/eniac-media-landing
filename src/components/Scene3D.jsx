@@ -138,7 +138,29 @@ function Rig() {
   return null;
 }
 
+function webglAvailable() {
+  try {
+    const canvas = document.createElement("canvas");
+    return !!(
+      window.WebGLRenderingContext &&
+      (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
+    );
+  } catch {
+    return false;
+  }
+}
+
 export default function Scene3D() {
+  const supported = useMemo(() => webglAvailable(), []);
+  // Post-processing (bloom) is the most fragile part on mobile GPUs — desktop only.
+  const enablePost = useMemo(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(pointer: fine)").matches &&
+      window.innerWidth >= 768,
+    []
+  );
+
   useEffect(() => {
     const onMove = (e) => {
       pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -147,6 +169,8 @@ export default function Scene3D() {
     window.addEventListener("pointermove", onMove);
     return () => window.removeEventListener("pointermove", onMove);
   }, []);
+
+  if (!supported) return null;
 
   return (
     <Canvas
@@ -158,15 +182,17 @@ export default function Scene3D() {
       <Suspense fallback={null}>
         <Crystal />
         <ParticleField />
-        <EffectComposer>
-          <Bloom
-            mipmapBlur
-            intensity={1.5}
-            luminanceThreshold={0.12}
-            luminanceSmoothing={0.35}
-            radius={0.85}
-          />
-        </EffectComposer>
+        {enablePost && (
+          <EffectComposer>
+            <Bloom
+              mipmapBlur
+              intensity={1.5}
+              luminanceThreshold={0.12}
+              luminanceSmoothing={0.35}
+              radius={0.85}
+            />
+          </EffectComposer>
+        )}
       </Suspense>
       <Rig />
     </Canvas>
