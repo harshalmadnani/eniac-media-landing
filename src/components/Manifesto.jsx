@@ -7,7 +7,7 @@ export default function Manifesto() {
         <SectionLabel index="(00)">The thesis</SectionLabel>
         <ScrollHighlight
           className="mt-10 max-w-4xl font-display text-3xl font-semibold leading-[1.18] tracking-tight sm:text-5xl sm:leading-[1.16]"
-          text="Most agencies chase impressions and call it growth. We engineer momentum — pairing 2,000+ vetted creators with full-funnel execution so attention becomes acquisition, communities compound, and Web3 brands scale long after the campaign ends."
+          text="At ENIAC Media, we don't just market Web3 projects — we engineer sustainable growth, build communities, and help industry leaders scale their impact worldwide."
         />
       </div>
     </section>

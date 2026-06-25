@@ -7,44 +7,44 @@ const services = [
   {
     icon: Megaphone,
     title: "KOL & Influencer Marketing",
-    tag: "Access 2,000+ crypto KOLs, creators & UGC partners",
-    desc: "High-impact influencer campaigns across X, YouTube, Telegram, Discord, and TikTok — planned, executed, and measured through our analytics platform.",
-    deliver: ["Crypto KOL campaigns", "Influencer outreach & management", "UGC content production", "Ambassador programs", "Viral awareness campaigns", "Performance analytics"],
+    tag: "Access 2,000+ Crypto KOLs, Creators & UGC Partners",
+    desc: "Launch high-impact influencer campaigns through our curated network of 2,000+ vetted KOLs, creators, analysts, and content producers across X, YouTube, Telegram, Discord, TikTok, and emerging Web3 channels. Every campaign is strategically planned, executed, and measured through our proprietary analytics platform, Metricus, ensuring transparent performance tracking and measurable ROI.",
+    deliver: ["Crypto KOL Campaigns", "Influencer Outreach & Management", "UGC Content Production", "Ambassador Programs", "Viral Awareness Campaigns", "Performance Analytics & Reporting"],
   },
   {
     icon: TrendingUp,
     title: "User Acquisition & Growth",
-    tag: "Sustainable growth beyond vanity metrics",
-    desc: "Full-funnel growth systems designed to acquire, activate, and retain high-value users at scale across multiple channels.",
-    deliver: ["Acquisition strategy", "Growth campaigns", "Community expansion", "Referral programs", "Conversion optimization", "Retention systems"],
+    tag: "Sustainable Growth Beyond Vanity Metrics",
+    desc: "We engineer full-funnel growth systems designed to acquire, activate, and retain high-value users at scale. From market validation and audience research to multi-channel growth execution, our approach focuses on sustainable user acquisition that compounds over time.",
+    deliver: ["User Acquisition Strategy", "Growth Marketing Campaigns", "Community Expansion", "Referral & Ambassador Programs", "Conversion Optimization", "Retention Systems"],
   },
   {
     icon: Share2,
     title: "Social Media Management",
-    tag: "Turn attention into authority",
-    desc: "High-frequency, algorithmically optimized content strategies that maximize reach, engagement, and community growth with a consistent brand voice.",
-    deliver: ["X (Twitter) management", "LinkedIn growth", "Content strategy", "Daily content production", "Community engagement", "Brand positioning"],
+    tag: "Turn Attention Into Authority",
+    desc: "Build a strong and recognizable Web3 brand across every major platform. Our team creates high-frequency, algorithmically optimized content strategies designed to maximize reach, engagement, and community growth while maintaining a consistent brand voice.",
+    deliver: ["X (Twitter) Management", "LinkedIn Growth", "Content Strategy", "Daily Content Production", "Community Engagement", "Brand Positioning"],
   },
   {
     icon: Compass,
     title: "Advisory Services",
-    tag: "Master every stage that matters",
-    desc: "Expert strategic guidance for launching and scaling — stronger foundations through planning, tokenomics, GTM, and launch readiness.",
-    deliver: ["Roadmap development", "Tokenomics consulting", "Whitepaper advisory", "Go-to-market strategy", "Ecosystem positioning", "Launch preparation"],
+    tag: "Master Every Stage That Matters",
+    desc: "Navigate the complexities of launching and scaling a Web3 project with expert strategic guidance. We help founders build stronger foundations through roadmap planning, tokenomics consulting, go-to-market strategy, whitepaper development, ecosystem positioning, and launch readiness.",
+    deliver: ["Roadmap Development", "Tokenomics Consulting", "Whitepaper Advisory", "Go-To-Market Strategy", "Ecosystem Positioning", "Launch Preparation"],
   },
   {
     icon: CalendarDays,
-    title: "Event Marketing & Experiences",
-    tag: "Create experiences that build communities",
-    desc: "From founder meetups to large-scale conferences and virtual activations — experiences that strengthen relationships and brand impact.",
-    deliver: ["Event strategy & planning", "Conference activation", "Side events & meetups", "Virtual events & AMAs", "Speaker coordination", "Post-event amplification"],
+    title: "Event Marketing & Community Experiences",
+    tag: "Create Experiences That Build Communities",
+    desc: "From intimate founder meetups to large-scale conferences and virtual activations, we design experiences that strengthen relationships, increase visibility, and create lasting brand impact.",
+    deliver: ["Event Strategy & Planning", "Conference Activation", "Side Events & Meetups", "Virtual Events & AMAs", "Speaker & Partner Coordination", "Post-Event Amplification"],
   },
   {
     icon: Sparkles,
     title: "Custom Growth Solutions",
-    tag: "Built around your vision",
-    desc: "Bespoke growth systems tailored to your goals, stage, and market — from TGE marketing to end-to-end execution.",
-    deliver: ["TGE marketing", "Brand strategy", "Ecosystem partnerships", "OTC collaborations", "Market expansion", "End-to-end growth"],
+    tag: "Built Around Your Vision",
+    desc: "Every project is different. That's why we create bespoke growth systems tailored specifically to your goals, stage, and market. Whether you need TGE marketing, branding, ecosystem partnerships, OTC KOL collaborations, launch campaigns, or end-to-end growth execution, we build the exact playbook required for success.",
+    deliver: ["TGE Marketing", "Brand Strategy", "Ecosystem Partnerships", "OTC & Strategic Collaborations", "Market Expansion Campaigns", "End-to-End Growth Execution"],
   },
 ];
 
@@ -54,12 +54,17 @@ export default function Services() {
       <div className="container-px">
         <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <Reveal>
-            <SectionLabel index="(02)">Our services</SectionLabel>
+            <SectionLabel index="(02)">Our Services</SectionLabel>
             <AnimatedHeading
-              text="Growth solutions built for Web3 leaders."
-              accentWords={["Web3", "leaders"]}
+              text="Growth Solutions Built for Web3 Leaders"
+              accentWords={["Web3", "Leaders"]}
               className="mt-6 max-w-2xl font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl"
             />
+            <p className="mt-5 max-w-xl text-muted">
+              From early-stage launches to global ecosystem expansion, Eniac Media delivers
+              growth infrastructure trusted by Web3 founders, protocols, exchanges, and
+              emerging ecosystems.
+            </p>
           </Reveal>
           <Reveal delay={0.1}>
             <SmartLink to="#contact" className="btn-ghost shrink-0">

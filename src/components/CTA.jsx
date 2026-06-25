@@ -27,23 +27,29 @@ export default function CTA() {
       <div className="container-px relative">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
-            <SectionLabel index="(07)">Contact us</SectionLabel>
-            <h2 className="mt-6 max-w-md text-balance font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
-              Let's build something <span className="text-lime">extraordinary</span> together.
+            <SectionLabel index="(07)">Contact Us</SectionLabel>
+            <h2 className="mt-6 max-w-md text-balance font-display text-4xl font-semibold leading-[1.02] tracking-tight sm:text-5xl">
+              Let's Build Something <span className="text-gradient">Extraordinary</span> Together
             </h2>
             <p className="mt-6 max-w-md text-muted">
-              Whether you're launching a token, scaling a community, planning a TGE, or
-              running influencer campaigns, our team is ready. We'll review your inquiry and
-              get back within 24–48 hours.
+              Whether you're launching a token, scaling a community, planning a TGE, running
+              influencer campaigns, or looking for strategic growth support, our team is ready
+              to help. Get in touch and let's discuss how Eniac Media can accelerate your next
+              stage of growth.
             </p>
-            <div className="mt-10 flex flex-col gap-3 font-mono text-sm">
-              <a href="mailto:info@eniacmedia.com" className="text-bone hover:text-lime">
-                info@eniacmedia.com
-              </a>
-              <a href="https://t.me/Eniacmedia" target="_blank" rel="noreferrer" className="text-bone hover:text-lime">
-                t.me/Eniacmedia
-              </a>
-              <span className="text-muted">A real human reads every message.</span>
+            <div className="mt-10 space-y-4">
+              <div>
+                <div className="label-mono">Email</div>
+                <a href="mailto:info@eniacmedia.com" className="mt-1 block font-mono text-sm text-bone hover:text-lime">
+                  info@eniacmedia.com
+                </a>
+              </div>
+              <div>
+                <div className="label-mono">Telegram</div>
+                <a href="https://t.me/Eniacmedia" target="_blank" rel="noreferrer" className="mt-1 block font-mono text-sm text-bone hover:text-lime">
+                  https://t.me/Eniacmedia
+                </a>
+              </div>
             </div>
           </Reveal>
 
@@ -83,18 +89,25 @@ export default function CTA() {
                     onSubmit={handleSubmit}
                     className="flex flex-col gap-4"
                   >
+                    <div className="mb-1">
+                      <h3 className="font-display text-xl font-semibold">Tell Us About Your Project</h3>
+                      <p className="mt-2 text-sm text-muted">
+                        Share a few details about your project and goals. Our team will review
+                        your inquiry and get back to you within 24-48 hours.
+                      </p>
+                    </div>
                     <div className="grid gap-4 sm:grid-cols-2">
-                      <Field label="Full name" name="name" placeholder="John Doe" />
-                      <Field label="Project / Company" name="project" placeholder="Your project name" />
+                      <Field label="Full Name*" name="name" placeholder="John Doe" />
+                      <Field label="Project / Company Name" name="project" placeholder="Enter your project name" required={false} />
                     </div>
                     <Field
-                      label="Email address"
+                      label="Email Address*"
                       name="email"
                       type="email"
                       placeholder="Enter your email address"
                     />
                     <div>
-                      <label className="label-mono">Service interested in</label>
+                      <label className="label-mono">Service Interested In</label>
                       <select
                         required
                         defaultValue=""
@@ -111,15 +124,16 @@ export default function CTA() {
                       </select>
                     </div>
                     <div>
-                      <label className="label-mono">Message</label>
+                      <label className="label-mono">Message*</label>
                       <textarea
                         rows={3}
+                        required
                         placeholder="Tell us about your project, goals, and how we can help."
                         className="mt-2 w-full resize-none rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-bone outline-none transition-colors placeholder:text-muted/60 focus:border-lime"
                       />
                     </div>
                     <button type="submit" className="btn-primary mt-2 w-full">
-                      Get in touch <ArrowUpRight size={16} />
+                      Get in Touch <ArrowUpRight size={16} />
                     </button>
                   </motion.form>
                 )}
@@ -132,7 +146,7 @@ export default function CTA() {
   );
 }
 
-function Field({ label, name, type = "text", placeholder }) {
+function Field({ label, name, type = "text", placeholder, required = true }) {
   return (
     <div>
       <label className="label-mono" htmlFor={name}>
@@ -142,7 +156,7 @@ function Field({ label, name, type = "text", placeholder }) {
         id={name}
         name={name}
         type={type}
-        required
+        required={required}
         placeholder={placeholder}
         className="mt-2 w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-sm text-bone outline-none transition-colors placeholder:text-muted/60 focus:border-lime"
       />

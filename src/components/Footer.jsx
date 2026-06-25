@@ -43,14 +43,15 @@ const cols = [
       { label: "Home", to: "#top" },
       { label: "About", to: "#about" },
       { label: "Services", to: "#services" },
-      { label: "Case Studies", to: "/work" },
-      { label: "Creators Program", to: "/creators" },
-      { label: "Network", to: "#network" },
+      { label: "Blogs", to: "#" },
+      { label: "News", to: "#" },
     ],
   },
   {
     title: "Resources",
     links: [
+      { label: "Links", to: "#" },
+      { label: "Resources", to: "#" },
       { label: "Deck", to: "#contact" },
       { label: "Brand Kit", to: "#contact" },
       { label: "Careers", to: "#contact" },
@@ -77,14 +78,14 @@ export default function Footer() {
               <img src="/brand/eniac-logo.svg" alt="ENIAC Media" className="h-8 w-auto" />
             </SmartLink>
             <p className="mt-6 max-w-sm text-balance font-display text-2xl font-medium leading-snug">
-              Embrace the future of Web3 &amp; blockchain.
+              Embrace the Future of Web3 &amp; Blockchain
             </p>
             <p className="mt-4 max-w-sm text-sm text-muted">
               Let's collaborate to build communities, drive adoption, and create meaningful
               growth opportunities in the decentralized economy.
             </p>
             <SmartLink to="#contact" className="btn-primary mt-8">
-              Book a free strategy call
+              Book a Free Strategy Call
             </SmartLink>
           </div>
 
@@ -111,7 +112,7 @@ export default function Footer() {
             ))}
 
             <div>
-              <h4 className="label-mono">Contact</h4>
+              <h4 className="label-mono">Contact Information</h4>
               <ul className="mt-5 space-y-3 text-sm">
                 <li>
                   <a href="mailto:info@eniacmedia.com" className="text-muted transition-colors hover:text-bone">
@@ -143,7 +144,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-muted sm:flex-row">
-          <span>© {new Date().getFullYear()} Eniac Media. All rights reserved.</span>
+          <span>© 2026 Eniac Media. All Rights Reserved.</span>
           <span>Built for Web3 Growth, PR &amp; Marketing.</span>
         </div>
       </div>

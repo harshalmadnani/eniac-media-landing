@@ -31,11 +31,13 @@ const word = {
 
 const headline = [
   { t: "The", accent: false },
-  { t: "growth", accent: true },
-  { t: "engine", accent: false },
-  { t: "behind", accent: false },
-  { t: "Web3's", accent: true },
-  { t: "best.", accent: false },
+  { t: "World's", accent: false },
+  { t: "Leading", accent: false },
+  { t: "Web3", accent: true },
+  { t: "Marketing", accent: false },
+  { t: "&", accent: false },
+  { t: "Growth", accent: true },
+  { t: "Agency", accent: false },
 ];
 
 const stats = [
@@ -64,7 +66,7 @@ export default function Hero() {
             Web3 marketing &amp; growth agency
           </motion.div>
 
-          <h1 className="mt-7 font-display text-[13vw] font-semibold leading-[0.98] tracking-[-0.02em] sm:text-6xl lg:text-[5.5rem]">
+          <h1 className="mt-7 font-display text-[11vw] font-semibold leading-[1] tracking-[-0.02em] sm:text-5xl lg:text-[4.25rem]">
             <span className="flex flex-wrap justify-center gap-x-[0.28em] lg:justify-start">
               {headline.map((w, i) => (
                 <span key={i} className="overflow-hidden pb-[0.06em]">
@@ -88,8 +90,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="mx-auto mt-7 max-w-lg text-balance text-base text-muted sm:text-lg lg:mx-0"
           >
-            KOL Marketing · PR · Social · User Acquisition · Token Launches. Trusted by
-            50+ exchanges, protocols, and Web3 brands worldwide.
+            KOL Marketing · PR · Social Media · User Acquisition · Token Launches
           </motion.p>
 
           <motion.div

@@ -4,27 +4,27 @@ import { Reveal, SectionLabel, AnimatedHeading } from "./ui";
 const values = [
   {
     icon: Users,
-    title: "2,000+ verified KOLs & creators",
+    title: "2,000+ Verified KOLs & Creators",
     desc: "Access one of the largest curated Web3 influencer networks.",
   },
   {
     icon: BarChart3,
-    title: "Data-driven execution",
+    title: "Data-Driven Execution",
     desc: "Every campaign is optimized through performance analytics and measurable KPIs.",
   },
   {
     icon: Cpu,
-    title: "Web3-native team",
-    desc: "Deep expertise across DeFi, AI, infrastructure, gaming, memecoins, and Layer 1 ecosystems.",
+    title: "Web3 Native Team",
+    desc: "Deep expertise across DeFi, AI, Infrastructure, Gaming, Memecoins, and Layer 1 ecosystems.",
   },
   {
     icon: Layers,
-    title: "Full-funnel growth",
+    title: "Full-Funnel Growth",
     desc: "From awareness and acquisition to retention and community building.",
   },
   {
     icon: Target,
-    title: "Founder-centric approach",
+    title: "Founder-Centric Approach",
     desc: "Growth strategies customized around project goals, milestones, and token events.",
   },
 ];
@@ -34,12 +34,16 @@ export default function Values() {
     <section className="relative border-t border-white/10 py-24 sm:py-32">
       <div className="container-px">
         <Reveal>
-          <SectionLabel index="(06)">Why Eniac</SectionLabel>
+          <SectionLabel index="(06)">Why Choose Eniac Media</SectionLabel>
           <AnimatedHeading
-            text="Built for Web3 growth. Trusted by industry leaders."
-            accentWords={["growth", "leaders"]}
+            text="Built for Web3 Growth. Trusted by Industry Leaders."
+            accentWords={["Growth", "Leaders"]}
             className="mt-6 max-w-2xl font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl"
           />
+          <p className="mt-5 max-w-xl text-muted">
+            Helping Web3 projects scale through influencer marketing, user acquisition,
+            community growth, exchange partnerships, and strategic execution.
+          </p>
         </Reveal>
 
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -59,12 +63,12 @@ export default function Values() {
           <Reveal delay={values.length * 0.06}>
             <div className="flex h-full flex-col justify-between rounded-2xl bg-lime p-7 text-white">
               <span className="font-mono text-xs uppercase tracking-widest text-white/60">
-                Our reach
+                Our Impact
               </span>
               <div>
                 <div className="font-display text-4xl font-bold leading-none">100M+</div>
                 <p className="mt-3 text-sm text-white/80">
-                  Campaign impressions generated across global exchanges, protocols, and
+                  Campaign Impressions Generated across global exchanges, protocols &amp;
                   trading ecosystems.
                 </p>
               </div>
