@@ -60,11 +60,6 @@ export default function Services() {
               accentWords={["Web3", "Leaders"]}
               className="mt-6 max-w-2xl font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl"
             />
-            <p className="mt-5 max-w-xl text-muted">
-              From early-stage launches to global ecosystem expansion, Eniac Media delivers
-              growth infrastructure trusted by Web3 founders, protocols, exchanges, and
-              emerging ecosystems.
-            </p>
           </Reveal>
           <Reveal delay={0.1}>
             <SmartLink to="#contact" className="btn-ghost shrink-0">
@@ -89,12 +84,10 @@ export default function Services() {
                   <span className="font-mono text-sm text-white/20">0{i + 1}</span>
                 </div>
                 <h3 className="relative mt-6 font-display text-xl font-semibold">{s.title}</h3>
-                <p className="relative mt-1.5 text-[13px] font-medium text-lime/90">{s.tag}</p>
-                <p className="relative mt-3 text-sm text-muted">{s.desc}</p>
-                <ul className="relative mt-5 grid grid-cols-1 gap-x-4 gap-y-2 border-t border-white/10 pt-5 sm:grid-cols-2">
-                  {s.deliver.map((d) => (
-                    <li key={d} className="flex items-center gap-2 text-xs text-muted">
-                      <span className="h-1 w-1 shrink-0 rounded-full bg-lime" />
+                <p className="relative mt-2 text-sm text-muted">{s.tag}</p>
+                <ul className="relative mt-5 flex flex-wrap gap-2 border-t border-white/10 pt-5">
+                  {s.deliver.slice(0, 4).map((d) => (
+                    <li key={d} className="rounded-full border border-white/10 px-3 py-1 text-[11px] text-muted">
                       {d}
                     </li>
                   ))}
