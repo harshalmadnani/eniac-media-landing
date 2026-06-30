@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Download } from "lucide-react";
 import { SmartLink } from "../lib/SmartLink";
 import ErrorBoundary from "./ErrorBoundary";
+import { DECKS_URL } from "../data/network";
 
 const Scene3D = lazy(() => import("./Scene3D"));
 
@@ -102,9 +103,14 @@ export default function Hero() {
             <SmartLink to="#contact" className="btn-primary w-full sm:w-auto">
               Book a strategy call <ArrowUpRight size={16} />
             </SmartLink>
-            <SmartLink to="/work" className="btn-ghost w-full sm:w-auto">
-              <Download size={16} /> View our work
-            </SmartLink>
+            <a
+              href={DECKS_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-ghost w-full sm:w-auto"
+            >
+              <Download size={16} /> View decks
+            </a>
           </motion.div>
 
           {/* trust stats */}

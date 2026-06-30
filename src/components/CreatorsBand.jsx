@@ -13,12 +13,13 @@ export default function CreatorsBand() {
               <div className="max-w-2xl">
                 <SectionLabel index="✦">Now recruiting · 20 spots</SectionLabel>
                 <h3 className="mt-5 font-display text-3xl font-semibold leading-[1.05] tracking-tight sm:text-4xl">
-                  The Eniac Creators Graduation Program
+                  Creators Program
                 </h3>
                 <p className="mt-4 text-muted">
                   A 3-month paid acceleration program for rising crypto, trading &amp; finance
-                  creators — ₹20,000/month stipend, weekly mentorship, VIP brand access, and
-                  a sponsored Creator House finale.
+                  creators — <span className="text-bone">₹20,000/month + brand deals</span>,
+                  weekly mentorship, VIP brand access, and a sponsored Creator House finale.
+                  Apply with 2–10K followers.
                 </p>
               </div>
               <SmartLink to="/creators" className="btn-primary shrink-0">

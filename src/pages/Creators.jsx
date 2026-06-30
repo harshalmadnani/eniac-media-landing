@@ -11,8 +11,8 @@ const FORM_URL = "#";
 
 const overview = [
   ["Cohort size", "Limited to 20 micro-KOLs"],
-  ["Follower range", "~2,000 – 5,000 IG followers"],
-  ["Compensation", "₹20,000 / month stipend"],
+  ["Follower range", "2–10K followers to apply"],
+  ["Compensation", "₹20,000 / month + Brand Deals"],
   ["Commitment", "3-month Eniac exclusive agreement"],
 ];
 
@@ -20,7 +20,7 @@ const give = [
   {
     icon: Wallet,
     title: "Stable income",
-    desc: "A reliable ₹20,000/month base so you can focus entirely on improving your craft and consistency.",
+    desc: "A reliable ₹20,000/month + brand deals so you can focus entirely on improving your craft and consistency.",
   },
   {
     icon: GraduationCap,
@@ -59,7 +59,7 @@ export default function Creators() {
             <SmartLink to="/" className="mb-8 inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-bone">
               <ArrowLeft size={15} /> Back home
             </SmartLink>
-            <SectionLabel index="✦">Eniac Creators Graduation Program</SectionLabel>
+            <SectionLabel index="✦">Creators Program</SectionLabel>
           </Reveal>
           <AnimatedHeading
             text="Get paid to grow into a top creator."

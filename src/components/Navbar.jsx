@@ -5,9 +5,9 @@ import { SmartLink } from "../lib/SmartLink";
 
 const links = [
   { label: "Services", href: "#services" },
-  { label: "Case Studies", href: "/work" },
+  { label: "Why Us", href: "/why-us" },
   { label: "Network", href: "#network" },
-  { label: "Creators", href: "/creators" },
+  { label: "Creators Program", href: "/creators" },
 ];
 
 export default function Navbar() {
