@@ -2,7 +2,7 @@ import { clients } from "../data/network";
 
 export default function Marquee() {
   return (
-    <section id="clients" className="border-y border-white/10 bg-ink-900/40 py-10 backdrop-blur-sm">
+    <section className="border-y border-white/10 bg-ink-900/40 py-10 backdrop-blur-sm">
       <div className="container-px">
         <p className="mb-8 text-center label-mono">
           Our clients — trusted by leading exchanges &amp; Web3 brands

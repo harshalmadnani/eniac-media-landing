@@ -9,6 +9,7 @@ import Services from "../components/Services";
 import Process from "../components/Process";
 import CaseStudies from "../components/CaseStudies";
 import Showreel from "../components/Showreel";
+import Clients from "../components/Clients";
 import Influencers from "../components/Influencers";
 import CreatorsBand from "../components/CreatorsBand";
 import Values from "../components/Values";
@@ -30,6 +31,7 @@ export default function Home() {
         <Process />
         <CaseStudies />
         <Showreel />
+        <Clients />
         <Influencers />
         <CreatorsBand />
         <Values />
